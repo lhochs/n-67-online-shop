@@ -10,9 +10,9 @@ For our group project we decided to create an online store. It will display prod
 
 Roles:
 
-Lily Ochs – Co-Group Lead, Front-End, Check-Out Page
-Angel Galicia – Front-End 
-Matthew Luk – Co-Group Lead, Back-End, 
-Corey Duffy – Front-End
-Ngan Tran – Back-End, Api
+Lily Ochs – Co-Group Lead, Front-End, Check-Out Page;
+Angel Galicia – Front-End;
+Matthew Luk – Co-Group Lead, Back-End;
+Corey Duffy – Front-End;
+Ngan Tran – Back-End, Api;
 
