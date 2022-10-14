@@ -1,4 +1,4 @@
-# group6project
+# group67project
 
 Project Idea: N 67° Online Store
 
