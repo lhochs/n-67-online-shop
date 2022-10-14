@@ -16,3 +16,28 @@ Matthew Luk – Co-Group Lead, Back-End;
 Corey Duffy – Front-End;
 Ngan Tran – Back-End, Api;
 
+## Run the app on your localhost
+1. Install pipenv for virtual environment
+```
+pip3 install pipenv
+```
+
+2. Activating our Virtual Environment
+```
+python3 -m pipenv shell
+```
+
+3. Install dependencies for Pipfile
+```
+pipenv install -r requirements.txt
+```
+Note: To install any dependency, you can run this command:
+```
+pipenv install <dependency_name>
+For ex: `pipenv install flask`
+```
+
+4. Run our server!
+```
+python3 server.py
+```
