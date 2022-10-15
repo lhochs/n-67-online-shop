@@ -2,6 +2,7 @@ from flask_app import app
 from flask import redirect, render_template, request, session
 from flask_app.models.product import Product
 
+
 # This is where user can add product
 @app.route("/user/add_product", methods=['POST'])
 def add_product():
