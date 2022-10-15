@@ -1,10 +1,8 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 
-DB = 'group6project'
 
-# Note from Ngan: this is the initial fields that I put for now, 
-# we can update as we go
 class Order:
+    db = 'group6project'
     def __init__( self , data ):
         self.id = data['id']
         self.sub_total = data['sub_total']
