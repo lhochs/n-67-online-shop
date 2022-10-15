@@ -10,14 +10,20 @@ def cart():
 # This route where user will confirm their purchase?
 @app.route("/checkout")
 def checkout():
+    # Ngan's note: Need to replace this hardcode data with request.form data
+    # I'm thinking we might have:
+    # - a list of product_id that we captured from front-end
+    # - user_id comes from user login data in session
+    # - total comes from our front-end price calculation
+    data = {
+        'total': 10,
+        'user_id': 1,
+        'products': [
+            {
+                'product_id': 1,
+                'quantity': 2
+            }
+        ]
+    }
+    Order.add(data)
     return render_template("checkout.html")
-
-# This is where user can add product
-@app.route("/user/add_product")
-def add_product():
-    return render_template("add_edit_product_form.html")
-
-# This is where user can edit product
-@app.route("/user/edit_product/<id>")
-def edit_product(id):
-    return render_template("add_edit_product_form.html")
