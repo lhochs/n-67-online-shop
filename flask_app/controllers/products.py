@@ -4,7 +4,7 @@ from flask_app.models.product import Product
 
 
 # This is where user can add product
-@app.route("/user/add_product", methods=['POST'])
+@app.route("/user/add_product")
 def add_product():
     return render_template("add_edit_product_form.html")
 
