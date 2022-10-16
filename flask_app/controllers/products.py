@@ -1,3 +1,4 @@
+from crypt import methods
 from flask_app import app
 from flask import redirect, render_template, request, session
 from flask_app.models.product import Product
@@ -14,8 +15,21 @@ def add_product():
     # If user is a buyer, redirect
     if (session["role_type"] == "customer"):
         redirect("/")
-
     return render_template("add_edit_product_form.html")
+
+@app.route("/user/add_product_to_db", methods=['POST'])
+def add_product_to_db():
+    data = {
+        "product_name" : request.form["product_name"],
+        "price_per_unit" : request.form["price_per_unit"],
+        "product_description" : request.form["product_description"],
+        "product_instructions" : request.form["product_instructions"],
+        "product_quantity" : request.form["product_quantity"],
+        "product_img" : request.form["product_img"],
+        "seller_id" : session["user_id"]
+    }
+    Product.save(data)
+    return redirect('/dashboard_seller')
 
 # This is where user can edit product
 @app.route("/user/edit_product/<product_id>")
