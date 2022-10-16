@@ -11,7 +11,7 @@ class User:
         self.last_name = data['last_name']
         self.email = data['email']
         self.password = data['password']
-        self.role_type = data['role_type']
+        self.role_type = data['role_type'] # seller, user (buyer)
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
@@ -45,7 +45,7 @@ class User:
 
     @classmethod
     def save(cls,data):
-        query = "INSERT INTO users(first_name,last_name,email,password,role_type) VALUES(%(first_name)s,%(last_name)s,%(email)s,%(password)s,%(role_type)s);"
+        query = "INSERT INTO users(first_name,last_name,role_type,email,password) VALUES(%(first_name)s,%(last_name)s,%(role_type)s,%(email)s,%(password)s);"
         return connectToMySQL(cls.db).query_db(query,data)
 
     @classmethod
