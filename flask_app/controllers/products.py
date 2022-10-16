@@ -12,7 +12,7 @@ def add_product():
         redirect("/login")
 
     # If user is a buyer, redirect
-    if (session["role_type"] == "buyer"):
+    if (session["role_type"] == "customer"):
         redirect("/")
 
     return render_template("add_edit_product_form.html")
@@ -25,12 +25,12 @@ def edit_product(product_id):
         redirect("/login")
 
     # If user is a buyer, redirect
-    if (session["role_type"] == "buyer"):
+    if (session["role_type"] == "customer"):
         redirect("/")
 
     data = {
-        seller_id: user_id,
-        product_id: product_id
+        "seller_id": session["user_id"],
+        "product_id": product_id
     }
     # If the product in url not belong to seller, redirect
     if (not Product.check_if_seller_has_product(data)):
@@ -43,6 +43,11 @@ def edit_product(product_id):
     product = Product.get_by_id(product_data)
 
     return render_template("add_edit_product_form.html", product=product)
+
+@app.route("/dashboard_seller")
+def dashboard_seller():
+    user_id = session["user_id"]
+    return render_template("dashboard_seller.html", all_products = Product.get_all_products_with_users(), user_id = user_id)
 
 #####################################
 #### This is where the API stays ####

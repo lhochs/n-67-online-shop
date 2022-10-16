@@ -7,6 +7,14 @@
     <title>Dashboard Seller</title>
 </head>
 <body>
-    
+    {%for i in all_products%}
+    <p>{{i.product_name}}</p>
+    <p>{{i.product_quantity}}</p>
+    <p>{{i.users.first_name}} {{i.users.last_name}}</p>
+    {%if i.seller_id == user_id%}
+    <a href="">Edit</a>
+    <a href="">Delete</a>
+    {%endif%}
+    {%endfor%}
 </body>
 </html>
