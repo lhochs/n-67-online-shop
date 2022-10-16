@@ -18,7 +18,16 @@ class Product:
 
     @classmethod
     def get_all(cls):
-        query = "SELECT * FROM products"
+        query = "SELECT * FROM products;"
+        results = connectToMySQL(cls.db).query_db(query)
+        products = []
+        for row in results:
+            products.append(cls(row))
+        return products
+
+    @classmethod
+    def get_all_products_by_seller_id(cls):
+        query = "SELECT * FROM products WHERE seller_id = %(seller_id)s;"
         results = connectToMySQL(cls.db).query_db(query)
         products = []
         for row in results:
@@ -68,3 +77,13 @@ class Product:
             flash("Instructions must be at least 3 characters")
             is_valid = False
         return is_valid
+
+    @classmethod
+    def check_if_seller_has_product(cls, data):
+        query = "SELECT * FROM products WHERE product_id = %(product_id)s AND seller_id = %(seller_id)s;"
+        results = connectToMySQL(cls.db).query_db(query,data)
+        
+        if len(results) < 1:
+            return False
+        
+        return True

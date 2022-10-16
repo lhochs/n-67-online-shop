@@ -1,10 +1,15 @@
 from flask_app import app
 from flask import redirect, render_template, request, session, flash
 from flask_app.models.user import User
+from flask_app.models.order import Order
+from flask_app.models.product import Product
 from flask_bcrypt import Bcrypt
 
 bcrypt = Bcrypt(app)
 
+########################################
+#### This is where we set the route ####
+########################################
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -12,6 +17,42 @@ def index():
 @app.route("/login_and_register")
 def login_and_register():
     return render_template("login.html")
+
+@app.route("/signup")
+def signup():
+    return render_template("signup.html")
+
+# user dashboard - show all the orders they have
+@app.route("/user_dashboard")
+def user_dashboard():
+    # Check if user logs in and user has the same id as given customer_id
+    if (not session):
+        redirect("/login")
+
+    user_data = {
+        customer_id: session["user_id"]
+    }
+    orders = Order.get_all_orders_by_customer_id(user_data)
+
+    return render_template("user_dashboard.html", orders=orders)
+
+# seller dashboard - show all the products they have
+@app.route("/seller_dashboard")
+def seller_dashboard():
+    if (not session):
+        redirect("/")
+
+    user_data = {
+        seller_id: session["user_id"]
+    }
+    products = Product.get_all_products_by_seller_id(user_data)
+
+    return render_template("seller_dashboard.html", products=products)
+
+
+#####################################
+#### This is where the API stays ####
+#####################################
 
 @app.route("/register", methods=["POST"])
 def register():
@@ -41,12 +82,3 @@ def login():
         return redirect("/")
     flash("The email you entered isn't connected to an account. Find your account and log in.")
     return render_template()
-
-@app.route("/signup")
-def signup():
-    return render_template("signup.html")
-
-# This route can be used for both seller and buyer, based on user role
-@app.route("/user/dashboard")
-def dashboard():
-    return render_template("dashboard.html")
