@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N 67° Online Store</title>
+</head>
+<body>
+    <div>
+        <div>
+            <h1>N 67° </h1>
+            <a href="/login">Sign in</a>
+            <a href="/register">Register</a>
+            <img src="picture">
+        </div>
+        <div>
+            <a href="">Home</a>
+            <a href="">Products</a>
+            <a href="">Company</a>
+        </div>
+        <div>
+            <h3>Add a Product</h3>
+        </div>
+        <div>
+            <form actions="/user/add_product" method="post">
+                <input type="hidden" name="user_id" value="{{session.user_id}}">
+            <section>
+                <label for="name">Product Name:</label>
+                <input type="text" name="name">
+            </section>
+            <section>
+                <label for="description">Description:</label>
+                <textarea name="description" cols="50" rows="4" ></textarea>
+            </section>
+            <section>
+                <label for="instructions">Product Instructions:</label>
+                <textarea name="instructions" cols="50" rows="4"></textarea>
+            </section>
+            <section>
+                <label for="quantity">Quantity</label>
+                <input type="number" name="quantity">
+            </section>
+            <section>
+                <label for="size">Size</label>
+                <input type="" name="size">
+            </section>
+            <section>
+                <label for="img">Upload Image</label>
+                <input type="" name="size">
+            </section>
+            <button type="submit">Add Product</button>
+        </form>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
