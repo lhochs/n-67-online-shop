@@ -18,10 +18,6 @@ def index():
 def login_and_register():
     return render_template("login.html")
 
-@app.route("/signup")
-def signup():
-    return render_template("signup.html")
-
 # user dashboard - show all the orders they have
 @app.route("/user_dashboard")
 def user_dashboard():
