@@ -22,11 +22,12 @@ def register():
         "first_name":request.form["first_name"],
         "last_name":request.form["last_name"],
         "email":request.form["email"],
-        "password":pw_hash
+        "password":pw_hash,
+        "role_type":request.form["role_type"]
     }
     user_id = User.save(data)
     session["user_id"] = user_id
-    return redirect("/")
+    return redirect("/login_and_register")
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -37,10 +38,10 @@ def login():
         if not bcrypt.check_password_hash(user.password, request.form["password"]):
             flash("The password you've entered is incorrect.")
             return redirect("/login_and_register")
-        session["user_id"] = user.id
+        session["user_id"] = user.user_id
         return redirect("/")
     flash("The email you entered isn't connected to an account. Find your account and log in.")
-    return render_template()
+    return render_template("/login_and_register")
 
 @app.route("/signup")
 def signup():

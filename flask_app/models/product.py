@@ -45,16 +45,6 @@ class Product:
         query = "DELETE FROM products WHERE id = %(id)s;"
         return connectToMySQL(cls.db).query_db(query,data)
 
-    @classmethod
-    def get_by_id(cls,data):
-        query = "SELECT * FROM products WHERE id = %(id)s;"
-        results = connectToMySQL(cls.db).query_db(query,data)
-        if len(results) < 1:
-            return False
-        row = results[0]
-        product = cls(row)
-        return product
-
     @staticmethod
     def validate_product(product):
         is_valid = True
