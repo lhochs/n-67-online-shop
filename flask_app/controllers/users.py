@@ -41,7 +41,7 @@ def login():
         session["user_id"] = user.user_id
         return redirect("/")
     flash("The email you entered isn't connected to an account. Find your account and log in.")
-    return render_template("/login_and_register")
+    return redirect("/login_and_register")
 
 @app.route("/signup")
 def signup():
