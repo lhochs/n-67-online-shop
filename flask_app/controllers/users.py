@@ -25,12 +25,13 @@ def signup():
 # user dashboard - show all the orders they have
 @app.route("/user_dashboard")
 def user_dashboard():
+    print(session)
     # Check if user logs in and user has the same id as given customer_id
     if (not session):
         redirect("/login")
 
     user_data = {
-        customer_id: session["user_id"]
+        "customer_id": session["user_id"]
     }
     orders = Order.get_all_orders_by_customer_id(user_data)
 
@@ -43,7 +44,7 @@ def seller_dashboard():
         redirect("/")
 
     user_data = {
-        seller_id: session["user_id"]
+        "seller_id": session["user_id"]
     }
     products = Product.get_all_products_by_seller_id(user_data)
 
@@ -62,11 +63,14 @@ def register():
     data = {
         "first_name":request.form["first_name"],
         "last_name":request.form["last_name"],
+        "role_type":request.form.get("role_type", "buyer"),
         "email":request.form["email"],
         "password":pw_hash
     }
     user_id = User.save(data)
     session["user_id"] = user_id
+    session["role_type"] = request.form.get("role_type", "buyer") # set default to buyer for now
+
     return redirect("/")
 
 @app.route("/login", methods=["POST"])

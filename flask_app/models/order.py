@@ -27,6 +27,7 @@ class Order:
         results = connectToMySQL(cls.db).query_db(query)
 
         orders = []
+        print(len(results))
         for row in results:
             orders.append(cls(row))
         return orders
