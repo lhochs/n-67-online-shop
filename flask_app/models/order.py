@@ -27,17 +27,21 @@ class Order:
         results = connectToMySQL(cls.db).query_db(query)
 
         orders = []
-        print(len(results))
-        for row in results:
-            orders.append(cls(row))
+
+        if results:
+            for row in results:
+                orders.append(cls(row))
+
         return orders
 
     @classmethod
     def get_order_by_id(cls, data):
         query = "SELECT * FROM orders WHERE order_id = %(order_id)s"
         results = connectToMySQL(cls.db).query_db(query)
+        order = {}
         
-        order = cls(results[0])
+        if results:
+            order = cls(results[0])
 
         return order
         

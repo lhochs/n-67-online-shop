@@ -27,9 +27,9 @@ class Product:
         return products
 
     @classmethod
-    def get_all_products_by_seller_id(cls):
+    def get_all_products_by_seller_id(cls, data):
         query = "SELECT * FROM products WHERE seller_id = %(seller_id)s;"
-        results = connectToMySQL(cls.db).query_db(query)
+        results = connectToMySQL(cls.db).query_db(query, data)
         products = []
         for row in results:
             products.append(cls(row))
@@ -70,8 +70,8 @@ class Product:
         return is_valid
     
     @classmethod
-    def get_all_products_with_users(cls):
-        query = "SELECT * FROM products JOIN users ON products.seller_id = users.user_id;"
+    def get_all_products_with_users(cls, data):
+        query = "SELECT * FROM products JOIN users ON products.seller_id = users.user_id WHERE seller_id=%(seller_id)s;"
         results = connectToMySQL(cls.db).query_db(query)
         print(results)
         if len(results) < 1:

@@ -18,13 +18,17 @@ def index():
 def login_and_register():
     return render_template("login.html")
 
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/login_and_register")
+
 # user dashboard - show all the orders they have
-@app.route("/user_dashboard")
+@app.route("/customer_dashboard")
 def user_dashboard():
-    print(session)
     # Check if user logs in and user has the same id as given customer_id
     if (not session):
-        redirect("/login")
+        return redirect("/login_and_register")
 
     user_data = {
         "customer_id": session["user_id"]
@@ -37,14 +41,17 @@ def user_dashboard():
 @app.route("/seller_dashboard")
 def seller_dashboard():
     if (not session):
-        redirect("/")
+        return redirect("/login_and_register")
+    print(session)
+    if (session["role_type"] != "seller"):
+        return redirect("/")
 
     user_data = {
         "seller_id": session["user_id"]
     }
     products = Product.get_all_products_by_seller_id(user_data)
 
-    return render_template("seller_dashboard.html", products=products)
+    return render_template("seller_dashboard.html", all_products=products)
 
 
 #####################################
@@ -59,14 +66,14 @@ def register():
     data = {
         "first_name":request.form["first_name"],
         "last_name":request.form["last_name"],
-        "role_type":request.form.get("role_type", "buyer"),
+        "role_type":request.form.get("role_type", "customer"),
         "email":request.form["email"],
         "password":pw_hash,
         "role_type":request.form["role_type"]
     }
     user_id = User.save(data)
     session["user_id"] = user_id
-    session["role_type"] = request.form.get("role_type", "customer") # set default to buyer for now
+    session["role_type"] = request.form.get("role_type", "customer") # set default to customer for now
     return redirect("/login_and_register")
 
 @app.route("/login", methods=["POST"])
@@ -74,11 +81,15 @@ def login():
     if not User.validate_login(request.form):
         return redirect("/login_and_register")
     user = User.get_by_email(request.form)
+    print(user)
     if user:
         if not bcrypt.check_password_hash(user.password, request.form["password"]):
             flash("The password you've entered is incorrect.")
             return redirect("/login_and_register")
+
         session["user_id"] = user.user_id
+        session["role_type"] = user.role_type
+
         return redirect("/")
     flash("The email you entered isn't connected to an account. Find your account and log in.")
     return redirect("/login_and_register")

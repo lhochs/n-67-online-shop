@@ -10,11 +10,12 @@ from flask_app.models.product import Product
 @app.route("/user/add_product")
 def add_product():
     if (not session):
-        redirect("/login")
+        return redirect("/login_and_register")
 
-    # If user is a buyer, redirect
+    # If user is a customer, redirect
     if (session["role_type"] == "customer"):
-        redirect("/")
+        return redirect("/")
+        
     return render_template("add_edit_product_form.html")
 
 @app.route("/user/add_product_to_db", methods=['POST'])
@@ -36,11 +37,11 @@ def add_product_to_db():
 def edit_product(product_id):
     # If user is not logged in, redirect
     if (not session):
-        redirect("/login")
+        return redirect("/login_and_register")
 
-    # If user is a buyer, redirect
+    # If user is a customer, redirect
     if (session["role_type"] == "customer"):
-        redirect("/")
+        return redirect("/")
 
     data = {
         "seller_id": session["user_id"],
@@ -48,7 +49,7 @@ def edit_product(product_id):
     }
     # If the product in url not belong to seller, redirect
     if (not Product.check_if_seller_has_product(data)):
-        redirect("/")
+        return redirect("/")
 
     # Get product
     product_data = {
@@ -61,7 +62,12 @@ def edit_product(product_id):
 @app.route("/dashboard_seller")
 def dashboard_seller():
     user_id = session["user_id"]
-    return render_template("dashboard_seller.html", all_products = Product.get_all_products_with_users(), user_id = user_id)
+    data = {
+        "seller_id": user_id
+    }
+    all_products = Product.get_all_products_with_users(data)
+
+    return render_template("dashboard_seller.html", all_products = all_products, user_id = user_id)
 
 #####################################
 #### This is where the API stays ####
