@@ -36,7 +36,7 @@ def checkout():
 #### This is where the API stays ####
 #####################################
 @app.route('/orders/customer_id/order_id', methods=["GET"])
-def get_order_for_customer(customer_id):
+def get_order_for_customer(customer_id, order_id):
     # Check if user logs in and user has the same id as given customer_id
     if (not session):
         return {}
@@ -50,4 +50,19 @@ def get_order_for_customer(customer_id):
     }
     order = Order.get_order_by_id(data)
 
-    return render("")
+    return render_template("order_detail.html", order=order)
+
+@app.route("/submit_checkout", methods=["POST"])
+def submit_checkout():
+    data = {
+        "address": request.form["address"],
+        "sub_total": request.form["sub_total"],
+        "taxes": request.form["taxes"],
+        "shipping": request.form["shipping"],
+        "grand_total": request.form["grand_total"],
+        "customer_id": session["user_id"],
+        "products": request.form["products"]
+    }
+    new_order = Order.add(data)
+
+    return redirect("/customer_dashboard/" + new_order)
