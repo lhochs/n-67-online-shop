@@ -1,7 +1,7 @@
 from flask_app import app
 from flask import redirect, render_template, request, session
 from flask_app.models.order import Order
-from flask_app.models.payment import Payment
+
 
 ########################################
 #### This is where we set the route ####
@@ -33,20 +33,20 @@ from flask_app.models.payment import Payment
 #     Order.add(data)
 #     return render_template("checkout.html")
 
-@app.route("/checkout")
-def proceed_to_checkout():
-    return render_template("checkout.html")
+# @app.route('/checkout')
+# def proceed_to_checkout():
+#     return render_template('checkout.html')
 
-@app.route("/payment", methods=['POST'])
-def make_payment(id):
-    if not Payment.validate(request.form):
-        return redirect("/checkout")
-    data = {
-        "credit_num":request.form['credit_num'],
-        "billing_address":request.form['billing_address']
-    }
-    Payment.save(data)
-    return redirect("index.html")
+# @app.route('/payment', methods=['POST'])
+# def make_payment():
+#     if not Payment.validate(request.form):
+#         return redirect('/checkout/new')
+#     data = {
+#         "credit_num":request.form["credit_num"],
+#         "billing_address":request.form["billing_address"]
+#     }
+#     Payment.save(data)
+#     return redirect('/')
 
 #####################################
 #### This is where the API stays ####

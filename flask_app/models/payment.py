@@ -24,16 +24,16 @@ class Payment:
         return payment
     
     @classmethod
-    def save_payment(cls, data):
-        query = "INSERT INTO payments(payment_id,credit_num,billing_address) VALUES(%(paymend_id)s,%(credit_num)s,%(billing_address)s);"
+    def save(cls, data):
+        query = "INSERT INTO payments(credit_num,billing_address) VALUES(%(credit_num)s,%(billing_address)s);"
         
         return connectToMySQL(cls.db).query_db(query,data)
     
     @staticmethod
     def validate(payment):
         is_valid = True
-        if len(payment['credit_num'])< 15:
-            flash("Credit card number should be at least 15 digits")
+        if len(payment['credit_num'])< 10:
+            flash("Credit card number should be at least 10 digits")
             is_valid = False
         if len(payment['billing_address'])< 4:
             flash("Billing address must be longer than 4 characters")

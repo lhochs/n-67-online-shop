@@ -10,7 +10,7 @@
             <h1 class="sCart-title">Add Payment</h1>
         </div>
         <div class="-body"></div>
-            <form action="/payment">
+            <form action="/payment" method ="post">
                 <div class="error_message">
                     {% with messages = get_flashed_messages() %}     
                         {% if messages %}    
