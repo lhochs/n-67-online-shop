@@ -4,27 +4,58 @@ import json
 
 class Order:
     db = 'group6project'
+
     def __init__( self , data ):
-        self.id = data['id']
-        self.total = data['total']
-        self.created_at = data['created_at']
+        self.order_id = data['order_id']
+        self.address = data['address']
+        self.sub_total = data['sub_total']
+        self.taxes = data['taxes']
+        self.shipping = data['shipping']
+        self.grand_total = data['grand_total']
+        self.customer_id = data['customer_id']
+        self.order_date = data['order_date']
         self.updated_at = data['updated_at']
 
+
     @classmethod
-    def get_all_orders_by_user_id(cls, data):
-        query = "SELECT * FROM orders WHERE user_id = %(id)s"
+    def get_all_orders_by_customer_id(cls, data):
+        query = """
+            SELECT order_id, address, sub_total, taxes, shipping, grand_total, order_date, updated_at 
+            FROM orders 
+            WHERE customer_id = %(customer_id)s
+        """
         results = connectToMySQL(cls.db).query_db(query)
 
         orders = []
-        for row in results:
-            orders.append(cls(row))
+
+        if results:
+            for row in results:
+                orders.append(cls(row))
+
         return orders
+
+    @classmethod
+    def get_order_by_id(cls, data):
+        query = "SELECT * FROM orders WHERE order_id = %(order_id)s"
+        results = connectToMySQL(cls.db).query_db(query)
+        order = {}
+        
+        if results:
+            order = cls(results[0])
+
+        return order
         
     @classmethod
     def add(cls, data):
         order_data = {
-            'total': data['total'],
-            'user_id': data['user_id']
+            'address': data['address'],
+            'sub_total': data['sub_total'],
+            'taxes': data['taxes'],
+            'shipping': data['shipping'],
+            'grand_total': data['grand_total'],
+            'customer_id': data['customer_id'],
+            'address': data['address'],
+
         }
         # add order
         query = "INSERT INTO orders(total, user_id) VALUES (%(total)s, %(user_id)s);"

@@ -3,16 +3,15 @@ from flask import flash
 import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
-
 class User:
     db = 'group6project'
     def __init__( self , data ):
-        self.id = data['id']
+        self.user_id = data['user_id']
         self.first_name = data['first_name']
         self.last_name = data['last_name']
         self.email = data['email']
         self.password = data['password']
-        self.role = data['role'] # seller, user (buyer)
+        self.role_type = data['role_type'] # seller, user (customer)
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
@@ -37,17 +36,16 @@ class User:
 
     @classmethod
     def get_by_email(cls,data):
-        query = "SELECT * FROM users WHERE email = %(email)s;"
+        query = "SELECT * FROM users WHERE email = %(email)s LIMIT 1;"
         results = connectToMySQL(cls.db).query_db(query,data)
         if len(results) < 1:
             return False
-        row = results[0]
-        user = cls(row)
+        user = cls(results[0])
         return user
 
     @classmethod
     def save(cls,data):
-        query = "INSERT INTO users(first_name,last_name,email,password) VALUES(%(first_name)s,%(last_name)s,%(email)s,%(password)s);"
+        query = "INSERT INTO users(first_name,last_name,role_type,email,password) VALUES(%(first_name)s,%(last_name)s,%(role_type)s,%(email)s,%(password)s);"
         return connectToMySQL(cls.db).query_db(query,data)
 
     @classmethod
@@ -60,22 +58,22 @@ class User:
         is_valid = True
         user_in_db = User.get_by_email(user)
         if user_in_db:
-            flash("Email is associated with another account")
+            flash("Email is associated with another account","reg")
             is_valid = False
         if not EMAIL_REGEX.match(user["email"]):
-            flash("Invalid Email Address")
+            flash("Invalid Email Address","reg")
             is_valid = False
         if len(user["first_name"]) < 3:
-            flash("First name must be at least 3 characters.")
+            flash("First name must be at least 3 characters.","reg")
             is_valid = False
         if len(user["last_name"]) < 3:
-            flash("Last name must be at least 3 characters.")
+            flash("Last name must be at least 3 characters.","reg")
             is_valid = False
         if len(user["password"]) < 8:
-            flash("Password must be at least 8 characters.")
+            flash("Password must be at least 8 characters.","reg")
             is_valid = False
         if user["password"] != user["confirm_password"]:
-            flash("Passwords do not match!")
+            flash("Passwords do not match!","reg")
             is_valid = False
         return is_valid
 
