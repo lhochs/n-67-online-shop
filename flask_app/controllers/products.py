@@ -16,7 +16,7 @@ def add_product():
     if (session["role_type"] == "customer"):
         return redirect("/")
         
-    return render_template("add_edit_product_form.html")
+    return render_template("add_form.html")
 
 @app.route("/user/add_product_to_db", methods=['POST'])
 def add_product_to_db():
