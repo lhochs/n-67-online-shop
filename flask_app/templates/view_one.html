@@ -9,13 +9,17 @@
 </head>
 
 <body>
-    <h1>view one product headerl</h1>
-    <h3>anchor tags</h3>
+    <div>
+        <h1>N 67°</h1>
+        <a href="/login">Sign in</a>
+        <a href="/register">Register</a>
+    </div>
 
+    {%for i in all_products%}
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="..." class="d-block w-100" alt="...">
+                <img src={{i.product_image}} class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
                 <img src="..." class="d-block w-100" alt="...">
@@ -36,11 +40,12 @@
         </button>
     </div>
 
-    <h1>{{product.name}}</h1>
-    <p>{{product.description}}</p>
+    <!-- /# not sure if this will sync with the above carousel image #/ -->
+    <h1>{{i.product_name}}</h1>
+    <p>{{i.product_description}}</p>
 
     <h1>How to care for your plant</h1>
-    <p>{{product.description}}</p>
+    <p>{{i.product_instruction}}</p>
 </body>
 
 </html>
