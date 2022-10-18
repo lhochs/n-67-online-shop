@@ -7,7 +7,9 @@ from flask_app.models.product import Product
 #### This is where we set the route ####
 ########################################
 # This is where user can add product
-
+@app.route("/")
+def index():
+    return render_template("index.html", all_products = Product.get_all())
 
 @app.route("/user/add_product")
 def add_product():
