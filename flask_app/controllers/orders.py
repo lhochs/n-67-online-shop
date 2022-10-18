@@ -14,8 +14,8 @@ def addToCart(id):
     if 'user_id' not in session:
         session['user_id'] = []
         return redirect('/logout')
-    user_data = {
-        'id': session['user_id']
+    user_cart_data = {
+        'user_cart_id': session['user_id']
     }
     
     product = {
