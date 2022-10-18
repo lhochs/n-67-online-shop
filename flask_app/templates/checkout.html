@@ -9,6 +9,37 @@
     <script type="text/javascript" src="{{ url_for('static', filename='/js/my_script.js') }}"></script>
 </head>
 <body>
-    <h1>Checkout page</h1>
+    <div class="container">
+        <div class="top-nav">
+            <h1 class="sCart-title">Add Payment</h1>
+        </div>
+        <div class="-body"></div>
+            <form action="/payment" method ="post">
+                <div class="error_message">
+                    {% with messages = get_flashed_messages() %}     
+                        {% if messages %}    
+                            <div class="alert" role ="alert">
+                                <strong>Invalid Entry!!!</strong>                      
+                                {% for message in messages %}           
+                                    <p>{{message}}</p>
+                                {% endfor %}
+                            </div>  
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                <div class="checkout_form">
+                    <label for="credit_num">Credit Card Number: </label>
+                    <br>
+                    <input type="text" name="credit_num" required>
+                </div>
+                <div class="checkout_form">
+                    <label for="billing_address">Billing Address: </label>
+                    <br>
+                    <textarea name="billing_address" cols="20" rows="3" required></textarea>
+                </div>
+                <input type="submit" value="Submit Payment" class="page-btn">
+            </form>
+        </div>
+    </div>
 </body>
 </html>
