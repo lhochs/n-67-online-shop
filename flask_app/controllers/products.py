@@ -1,4 +1,4 @@
-from crypt import methods
+#from crypt import methods
 from flask_app import app
 from flask import redirect, render_template, request, session
 from flask_app.models.product import Product, User
