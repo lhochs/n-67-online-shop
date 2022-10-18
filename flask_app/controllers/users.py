@@ -100,7 +100,7 @@ def login():
         return render_template("user_dashboard.html")
     
     if role == "seller":
-        return redirect("seller_dashboard.html")
+        return render_template("seller_dashboard.html")
 
 
 @app.route("/signup")
