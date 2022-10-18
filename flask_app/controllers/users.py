@@ -12,7 +12,8 @@ bcrypt = Bcrypt(app)
 ########################################
 @app.route("/")
 def index():
-    return render_template("index.html")
+    user_id = session["user_id"]
+    return render_template("index.html", all_products = Product.get_all(), user_id = user_id)
 
 @app.route("/login_and_register")
 def login_and_register():
