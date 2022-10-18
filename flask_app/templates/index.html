@@ -1,19 +1,41 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='/css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='/js/my_script.js') }}"></script>
     <title>N 67° Online Store</title>
 </head>
 <body>
-    <h1>HELLO</h1>
-    {%for i in all_products%}
-    <p>{{i.product_name}}</p>
-    <p>{{i.product_quantity}}</p>
-    <p>{{i.users.first_name}} {{i.users.last_name}}</p>
-    {%if i.seller_id == user_id%}
-    <a href="">Edit</a>
-    <a href="">Delete</a>
-    {%endif%}
-    {%endfor%}
+    <div class="container">
+        <div class="nav-top-r">
+            <a href="/login">Sign in</a>
+            <span> | </span>
+            <a href="/register">Register</a>
+            <a href="/cart/order"><img src="{{ url_for('static', filename='/imgs/shopping_cart_icon.jpeg') }}"></a>
+        </div>
+        <div class="nav-bar">
+            <div class="nav-bar-title">
+                <h1>N 67° Online Store</h1>
+            </div>
+            <div>
+                <a href="/company">About Our Company</a>
+            </div>
+        </div>
+        <div class="h-body">
+            {% for i in all_products %}
+                <div class="h-product-card">
+                    <img src="{{ url_for('static', filename='/imgs/fail-to-load-img.png') }}">
+                    <p>{{i.product_img}}</p>
+                    <p>{{i.product_name}}</p>
+                    <p>{{i.price_per_unit}}</p>
+                    <a href='/cart/add/product>'>Add To Cart</a>
+                </div>
+            {%endfor%}
+        </div>
+    </div>
 </body>
 </html>

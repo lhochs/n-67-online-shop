@@ -10,6 +10,7 @@ bcrypt = Bcrypt(app)
 ########################################
 #### This is where we set the route ####
 ########################################
+
 @app.route("/")
 def index():
     # user_id = session["user_id"]

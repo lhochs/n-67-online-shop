@@ -1,6 +1,8 @@
 from flask_app import app
 from flask import redirect, render_template, request, session
 from flask_app.models.order import Order
+from flask_app.models.product import Product
+from flask_app.models.user import User
 
 
 ########################################
@@ -48,6 +50,7 @@ from flask_app.models.order import Order
 #     Payment.save(data)
 #     return redirect('/')
 
+
 #####################################
 #### This is where the API stays ####
 #####################################
@@ -82,3 +85,4 @@ def submit_checkout():
     new_order = Order.add(data)
 
     return redirect("/customer_dashboard/" + new_order)
+
