@@ -97,7 +97,8 @@ def login():
 
     if role == "customer":
         # print("GOT HERE !!!!!!!!!!!!")
-        return render_template("user_dashboard.html")
+        return redirect('/')
+        # return render_template("user_dashboard.html")
     
     if role == "seller":
         return render_template("seller_dashboard.html")
