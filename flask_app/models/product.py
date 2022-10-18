@@ -15,11 +15,11 @@ class Product:
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
         self.seller_id = data["seller_id"]
-        self.users = None
+        # self.users = None
 
     @classmethod
     def get_all(cls):
-        query = "SELECT * FROM products;"
+        query = "SELECT product_id, product_name, price_per_unit FROM products;"
         results = connectToMySQL(cls.db).query_db(query)
         products = []
         for row in results:

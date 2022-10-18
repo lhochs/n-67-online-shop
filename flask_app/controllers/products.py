@@ -7,6 +7,8 @@ from flask_app.models.product import Product
 #### This is where we set the route ####
 ########################################
 # This is where user can add product
+
+
 @app.route("/user/add_product")
 def add_product():
     if (not session):

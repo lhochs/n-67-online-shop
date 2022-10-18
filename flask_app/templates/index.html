@@ -14,15 +14,15 @@
     <div>
         <a href="/company">About Our Company</a>
     </div>
-    <form action  = "/setcookie" method = "POST">
+
         {% for i in all_products %}
         <p>{{i.product_img}}</p>
         <p>{{i.product_name}}</p>
         <p>{{i.price_per_unit}}</p>
         <!-- {%if i.seller_id == user_id%} -->
-        <a href='/cart/add/product/{{i.product_id}}>'>Add To Cart</a>
+        <a href='/cart/add/product>'>Add To Cart</a>
         <!-- {%endif%} -->
         {%endfor%}
-    </form>
+
 </body>
 </html>
