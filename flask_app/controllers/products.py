@@ -11,6 +11,11 @@ from flask_app.models.product import Product
 def index():
     return render_template("index.html", all_products = Product.get_all())
 
+@app.template_filter()
+def currencyFormat(value):
+    value = float(value)
+    return "${:,.2f}".format(value)
+
 @app.route("/user/add_product")
 def add_product():
     if (not session):
