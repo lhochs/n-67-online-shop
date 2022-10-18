@@ -1,15 +1,47 @@
 from flask_app import app
 from flask import redirect, render_template, request, session
 from flask_app.models.order import Order
+from flask_app.models.product import Product
+from flask_app.models.user import User
 
 ########################################
 #### This is where we set the route ####
 ########################################
 
 # This route where user can view items he/she added to cart
-@app.route("/cart")
-def cart():
-    return render_template("cart.html")
+@app.route('/cart/add/product/<int:id>')
+def addToCart(id):
+    if 'user_id' not in session:
+        session['user_id'] = []
+        return redirect('/logout')
+    user_data = {
+        'id': session['user_id']
+    }
+    
+    product = {
+        "product_id": id
+    }
+    
+    inCart = session['user_id'].append(id)
+    inCart.getSingleProduct(product)
+
+    return redirect("/")
+
+
+@app.route("/cart/order/<int:id")
+def viewCart(id):
+    if 'user_id' not in session:
+        return redirect('/logout')
+
+    user_data = {
+        'id':session['user_id']
+    }
+    
+    product_data = {
+        "product_id" : id
+    }
+
+    return render_template("cart.html", product = Product.get_by_id(product_data), user = User.get_by_id(user_data))
 
 # This route where user will confirm their purchase?
 @app.route("/checkout")
