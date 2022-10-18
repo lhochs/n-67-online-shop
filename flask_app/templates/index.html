@@ -14,14 +14,14 @@
     <div>
         <a href="/company">About Our Company</a>
     </div>
-    <form action  = "/setcookie" method = "POST>"
-        {%for i in all_products%}
+    <form action  = "/setcookie" method = "POST">
+        {% for i in all_products %}
+        <p>{{i.product_img}}</p>
         <p>{{i.product_name}}</p>
-        <p>{{i.product_quantity}}</p>
-        <p>{{i.users.first_name}} {{i.users.last_name}}</p>
-        {%if i.seller_id == user_id%}
+        <p>{{i.price_per_unit}}</p>
+        <!-- {%if i.seller_id == user_id%} -->
         <button type="submit" value="submit">Add to Cart</button>
-        {%endif%}
+        <!-- {%endif%} -->
         {%endfor%}
     </form>
 </body>
