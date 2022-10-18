@@ -5,14 +5,24 @@
     <title>N 67° Online Store</title>
 </head>
 <body>
-    {%for i in all_products%}
-    <p>{{i.product_name}}</p>
-    <p>{{i.product_quantity}}</p>
-    <p>{{i.users.first_name}} {{i.users.last_name}}</p>
-    {%if i.seller_id == user_id%}
-    <a href="">Edit</a>
-    <a href="">Delete</a>
-    {%endif%}
-    {%endfor%}
+    <div>
+        <h1 class="sCart-title">N 67° Online Store</h1>
+        <a href="/login">Sign in</a>
+        <a href="/register">Register</a>
+        <a href="/cart">View Cart</a>
+    </div>
+    <div>
+        <a href="/company">About Our Company</a>
+    </div>
+    <form action  = "/setcookie" method = "POST>"
+        {%for i in all_products%}
+        <p>{{i.product_name}}</p>
+        <p>{{i.product_quantity}}</p>
+        <p>{{i.users.first_name}} {{i.users.last_name}}</p>
+        {%if i.seller_id == user_id%}
+        <button type="submit" value="submit">Add to Cart</button>
+        {%endif%}
+        {%endfor%}
+    </form>
 </body>
 </html>
