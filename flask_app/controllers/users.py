@@ -34,6 +34,7 @@ def user_dashboard():
 
     return render_template("user_dashboard.html", orders=orders)
 
+
 # seller dashboard - show all the products they have
 @app.route("/seller_dashboard")
 def seller_dashboard():
@@ -75,21 +76,32 @@ def register():
 
 @app.route("/login", methods=["POST"])
 def login():
-    if not User.validate_login(request.form):
-        return redirect("/login_and_register")
+    # if not User.validate_login(request.form):
+    #     return redirect("/login_and_register")
     user = User.get_by_email(request.form)
-    print(user)
+
+    if not user:
+        flash("The email you entered isn't connected to an account. Find your account and log in.")
+        return redirect("/login_and_register")
+    # print(user)
+
     if user:
         if not bcrypt.check_password_hash(user.password, request.form["password"]):
             flash("The password you've entered is incorrect.")
             return redirect("/login_and_register")
 
-        session["user_id"] = user.user_id
-        session["role_type"] = user.role_type
+    session["user_id"] = user.user_id
+    role =  user.role_type
 
-        return redirect("/")
-    flash("The email you entered isn't connected to an account. Find your account and log in.")
-    return redirect("/login_and_register")
+    # print("the role is " + role)
+
+    if role == "customer":
+        # print("GOT HERE !!!!!!!!!!!!")
+        return render_template("user_dashboard.html")
+    
+    if role == "seller":
+        return redirect("seller_dashboard.html")
+
 
 @app.route("/signup")
 def signup():

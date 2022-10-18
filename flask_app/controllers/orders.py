@@ -10,23 +10,17 @@ from flask_app.models.user import User
 
 # This route where user can view items he/she added to cart
 @app.route('/cart/add/product')
-def addToCart(id):
+def addToCart():
     if 'user_id' not in session:
-        session['user_id'] = []
-        return redirect('/logout')
-    user_data = {
-        'id': session['user_id']
-    }
+        return redirect("/login_and_register")
     
-    product = {
+    data = {
+        "customer_id": session["user_id"],
         "product_id": id
     }
-    
-    inCart = session['user_id'].append(id)
-    inCart.getSingleProduct(product)
 
-    return redirect("/")
-
+    product = Product.get_by_id(data)
+    return redirect("/", product = product)
 
 @app.route("/cart/order/<int:id>")
 def viewCart(id):

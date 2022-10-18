@@ -16,10 +16,11 @@ def currencyFormat(value):
     value = float(value)
     return "${:,.2f}".format(value)
 
-@app.route("/user/add_product")
-def add_product():
-    if (not session):
-        redirect("/login")
+# @app.route("/user/add_product")
+# def add_product_cart():
+#     if (not session):
+#         return redirect("/login_and_register")
+    
 
     # If user is a buyer, redirect
     if (session["role_type"] == "customer"):
