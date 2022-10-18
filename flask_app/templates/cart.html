@@ -11,32 +11,34 @@
         <div class="top-nav">
             <h1 class="sCart-title">Your Shopping Cart</h1>
         </div>
+        <div class="top-nav">
+            <h1 class="sCart-title">Your Shopping Cart</h1>
+        </div>
         <div class="SC-body">
             <div class="col-1">
-                <div class="productText">
-                    <h3 class="itemName">product name</h3>
-                    <p class="itemDes">product description</p>
+                <div>
+                    {% for i in all_products %}
+                    <p>{{i.product_img}}</p>
+                    <p>{{i.product_name}}</p>
+                    <p>{{i.product_description}}</p>
+                    <p>{{i.price_per_unit}}</p>
+                    {%if i.session == user_id%}
+                    {%endfor%}
                 </div>
-                <div class="productNum">
-                    <p class="itemPrice">price</p>
-                    <p class="itemQty">qty</p>
-                    <href class="remove"></href>
-                </div>
-                
             </div>
             <div class="col-2">
                 <div class="subTotal">
                     <div class="top">
                         <h3>Subtotal:</h3>
-                        <h3>$22.22</h3>
+                        <h3>{{i.price_per_unit}*2}</h3>
                     </div>
                     <div class="mid">
                         <h3>Shipping: </h3>
-                        <h3>$8.00</h3>
+                        <h3>{{order.shipping}}</h3>
                     </div>
                     <div class="bottom">
                         <h3>Tax: </h3>
-                        <h3>12.27</h3>
+                        <h3>{12.27}</h3>
                     </div>
                 </div>
                 <div class="total">
