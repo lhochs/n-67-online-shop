@@ -10,11 +10,11 @@ class Product:
         self.price_per_unit = data['price_per_unit']
         self.product_description = data['product_description']
         self.product_qauntity = data['product_qauntity']
-        # self.product_img = data['product_img']
-        # self.created_at = data['created_at']
-        # self.updated_at = data['updated_at']
-        # self.seller_id = data['seller_id']
-        # self.users = None
+        self.product_img = data['product_img']
+        self.created_at = data['created_at']
+        self.updated_at = data['updated_at']
+        self.seller_id = data['seller_id']
+        self.users = None
 
     @classmethod
     def get_all(cls):

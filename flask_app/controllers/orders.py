@@ -9,6 +9,21 @@ from flask_app.models.user import User
 #### This is where we set the route ####
 ########################################
 
+
+# This route where user can view items he/she added to cart
+@app.route('/cart/add/product')
+def addToCart():
+    if 'user_id' not in session:
+        return redirect("/login_and_register")
+    
+    data = {
+        "customer_id": session["user_id"],
+        "product_id": id
+    }
+
+    product = Product.get_by_id(data)
+    return redirect("/", product = product)
+
 # # This route where user can view items he/she added to cart
 # @app.route("/cart")
 # def cart():
@@ -34,6 +49,7 @@ from flask_app.models.user import User
 #     }
 #     Order.add(data)
 #     return render_template("checkout.html")
+
 
 # @app.route('/checkout')
 # def proceed_to_checkout():
