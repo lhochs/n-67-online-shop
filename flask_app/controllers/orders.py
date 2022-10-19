@@ -17,6 +17,7 @@ def cart():
     tax_percent = 0.09375 #hard-code
     cart={}
     sub_total = 0.00
+    # shipping = 8.00
     tax_amount = 0
     total = 0
 
@@ -30,10 +31,10 @@ def cart():
         sub_total = round(sub_total, 2)
     
         tax_amount = round(sub_total*tax_percent, 2)
+        shipping_cost = 8.00
+        total = sub_total + tax_amount + shipping_cost
     
-        total = sub_total + tax_amount
-    
-    return render_template("cart.html", cart=cart, sub_total=sub_total, total=total, tax_amount=tax_amount)
+    return render_template("cart.html", cart=cart, sub_total=sub_total, total=total, tax_amount=tax_amount, shipping_cost = shipping_cost)
 
 @app.route('/cart/add', methods=['POST'])
 def addToCart():
@@ -59,10 +60,12 @@ def addToCart():
         session["cart"] = {}
         session["cart"][product_id] = product
     else:
-        if product_id in session['cart']:
-            session["cart"][product_id]["quantity"] += 1
+        cart = session['cart']
+        if product_id in cart:
+            cart[product_id]["quantity"] += 1
         else:
-            session["cart"][product_id] = product
+            cart[product_id] = product
+        session['cart'] = cart
 
     return {
         "success": True
