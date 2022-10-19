@@ -30,23 +30,23 @@
                     <p>{{cart[product_id].product_img}}</p>
                     <p>{{cart[product_id].product_name}}</p>
                     <p>Quantity: {{cart[product_id].quantity}}</p>
-                     <p>Price: {{cart[product_id].quantity * cart[product_id].price_per_unit}}</p>
+                     <p>Price: {{cart[product_id].quantity * cart[product_id].price_per_unit| currencyFormat}}</p>
                     {% endfor %}
                 </div>
                 <div class="sC-cost">
                     <div class="subTotal">
                         <div class="top">
-                            <h3>Subtotal: ${{sub_total}}</h3>
+                            <h3>Subtotal: {{sub_total | currencyFormat}}</h3>
                         </div>
                         <div class="mid">
-                            <h3>Shipping: ${{shipping_cost}}</h3>
+                            <h3>Shipping: {{shipping_cost | currencyFormat}}</h3>
                         </div>
                         <div class="bottom">
-                            <h3>Tax: ${{tax_amount}}</h3>
+                            <h3>Tax: {{tax_amount | currencyFormat}}</h3>
                         </div>
                     </div>
                     <div class="total">
-                        <h2>Total: ${{total}}</h2>
+                        <h2>Total: {{total | currencyFormat}}</h2>
                     </div>
                 </div>
             </div>
