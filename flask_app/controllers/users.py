@@ -48,14 +48,9 @@ def seller_dashboard():
     print(session)
     if (session["role_type"] != "seller"):
         return redirect("/")
-
-    user_data = {
-        "seller_id": session["user_id"]
-    }
-    products = Product.get_all_products_by_seller_id(user_data)
-
-    return render_template("seller_dashboard.html", all_products=products)
-
+    products = Product.get_all_products_with_users()
+    # return render_template("seller_dashboard.html", all_products=products)
+    return render_template("seller_dashboard.html",  all_products = products)
 
 #####################################
 #### This is where the API stays ####
@@ -106,7 +101,7 @@ def login():
         # return render_template("user_dashboard.html")
     
     if session["role_type"]== "seller":
-        return render_template("seller_dashboard.html")
+        return redirect('/seller_dashboard')
 
 
 @app.route("/signup")

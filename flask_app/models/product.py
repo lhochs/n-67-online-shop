@@ -9,7 +9,7 @@ class Product:
         self.product_name = data['product_name']
         self.price_per_unit = data['price_per_unit']
         self.product_description = data['product_description']
-        self.product_qauntity = data['product_qauntity']
+        self.product_quantity = data['product_quantity']
         self.product_img = data['product_img']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
@@ -20,7 +20,6 @@ class Product:
     def get_all(cls):
         query = "SELECT * FROM products;"
         results = connectToMySQL(cls.db).query_db(query)
-        print(results)
         products = []
         for row in results:
             products.append(cls(row))
@@ -30,6 +29,7 @@ class Product:
     def get_all_products_by_seller_id(cls, data):
         query = "SELECT * FROM products WHERE seller_id = %(seller_id)s;"
         results = connectToMySQL(cls.db).query_db(query, data)
+        print(results)
         products = []
         for row in results:
             products.append(cls(row))
@@ -41,9 +41,10 @@ class Product:
         results = connectToMySQL(cls.db).query_db(query,data)
         if len(results) < 1:
             return False
-        row = results[0]
-        product = cls(row)
-        return product
+        seller_products = []
+        for row in results:
+            seller_products.append(cls(row))
+        return seller_products
 
     @classmethod
     def save(cls,data):
@@ -72,12 +73,10 @@ class Product:
         return is_valid
     
     @classmethod
-    def get_all_products_with_users(cls, data):
-        query = "SELECT * FROM products JOIN users ON products.seller_id = users.user_id WHERE seller_id=%(seller_id)s;"
+    def get_all_products_with_users(cls):
+        query = "SELECT * FROM products JOIN users ON products.seller_id = users.user_id;"
         results = connectToMySQL(cls.db).query_db(query)
         print(results)
-        if len(results) < 1:
-            return []
         all_products = []
         for row in results:
             product = cls(row)
