@@ -31,7 +31,7 @@
             <div>
                 <h3>Edit {{product.product_name}}</h3>
             </div>
-            <form action="/user/edit_product/{{product.id}}" method="post">
+            <form action="/user/edit_product/{{product.id}}/submit_edit" method="post">
                 <p>Product Form</p>
                 <input type="hidden" name="user_id" value="{{session.user_id}}">
                 <section>
