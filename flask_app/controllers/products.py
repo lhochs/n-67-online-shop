@@ -2,7 +2,7 @@
 from flask_app import app
 from flask import redirect, render_template, request, session
 from flask_app.models.product import Product
-
+from flask_app.models.user import User
 ########################################
 #### This is where we set the route ####
 ########################################
@@ -16,19 +16,27 @@ def currencyFormat(value):
     value = float(value)
     return "${:,.2f}".format(value)
 
-# @app.route("/user/add_product")
-# def add_product_cart():
-#     if (not session):
-#         return redirect("/login_and_register")
-    
+@app.route("/user/new_product")
+def new_product():
+    if (not session):
+        return redirect("/login_and_register")
 
     # If user is a buyer, redirect
-    # if (session["role_type"] == "customer"):
-    #     return redirect("/")
-    # return render_template("add_form.html")
+    if (session["role_type"] == "customer"):
+        return redirect("/")
+
+    data ={
+        'id': session['user_id']
+    }
+    print(data)
+    return render_template("add_form.html", user=User.get_by_id(data))
 
 @app.route("/user/add_product_to_db", methods=['POST'])
 def add_product_to_db():
+    if 'seller_id' not in session:
+        return redirect('/')
+    if not Product.validate(request.form):
+        return redirect('/user/new_product')
     data = {
         "product_name" : request.form["product_name"],
         "price_per_unit" : request.form["price_per_unit"],
@@ -36,8 +44,7 @@ def add_product_to_db():
         "product_instructions" : request.form["product_instructions"],
         "product_quantity" : request.form["product_quantity"],
         "product_img" : request.form["product_img"],
-        "seller_id" : session["user_id"]
-        
+        "seller_id" : session["user_id"]  
     }
     Product.save(data)
     return redirect('/dashboard_seller')

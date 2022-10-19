@@ -96,16 +96,16 @@ def login():
             return redirect("/login_and_register")
 
     session["user_id"] = user.user_id
-    role =  user.role_type
+    session["role_type"] =  user.role_type
 
     # print("the role is " + role)
 
-    if role == "customer":
+    if session["role_type"]== "customer":
         # print("GOT HERE !!!!!!!!!!!!")
         return redirect('/')
         # return render_template("user_dashboard.html")
     
-    if role == "seller":
+    if session["role_type"]== "seller":
         return render_template("seller_dashboard.html")
 
 
