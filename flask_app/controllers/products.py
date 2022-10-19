@@ -7,15 +7,25 @@ from flask_app.models.product import Product, User
 #### This is where we set the route ####
 ########################################
 # This is where user can add product
-@app.route("/user/add_product")
-def add_product():
-    if (not session):
-        redirect("/login")
+# @app.route("/")
+# def index():
+#     return render_template("index.html", all_products = Product.get_all())
+
+@app.template_filter()
+def currencyFormat(value):
+    value = float(value)
+    return "${:,.2f}".format(value)
+
+# @app.route("/user/add_product")
+# def add_product_cart():
+#     if (not session):
+#         return redirect("/login_and_register")
+    
 
     # If user is a buyer, redirect
-    if (session["role_type"] == "customer"):
-        return redirect("/")
-    return render_template("add_form.html")
+    # if (session["role_type"] == "customer"):
+    #     return redirect("/")
+    # return render_template("add_form.html")
 
 @app.route("/user/add_product_to_db", methods=['POST'])
 def add_product_to_db():

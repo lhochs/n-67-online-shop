@@ -5,16 +5,15 @@ from flask import flash
 class Product:
     db = 'group6project'
     def __init__(self,data):
-        self.product_id = data["product_id"]
-        self.product_name = data["product_name"]
-        self.price_per_unit = data["price_per_unit"]
-        self.product_description = data["product_description"]
-        self.product_instructions = data["product_instructions"]
-        self.product_quantity = data["product_quantity"]
-        self.product_img = data["product_img"]
-        self.created_at = data["created_at"]
-        self.updated_at = data["updated_at"]
-        self.seller_id = data["seller_id"]
+        self.product_id = data['product_id']
+        self.product_name = data['product_name']
+        self.price_per_unit = data['price_per_unit']
+        self.product_description = data['product_description']
+        self.product_qauntity = data['product_qauntity']
+        self.product_img = data['product_img']
+        self.created_at = data['created_at']
+        self.updated_at = data['updated_at']
+        self.seller_id = data['seller_id']
         self.users = None
 
     @classmethod

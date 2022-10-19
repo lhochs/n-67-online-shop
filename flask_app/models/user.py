@@ -6,6 +6,7 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 class User:
     db = 'group6project'
     def __init__( self , data ):
+        print(data)
         self.user_id = data['user_id']
         self.first_name = data['first_name']
         self.last_name = data['last_name']
@@ -34,11 +35,24 @@ class User:
         user = cls(row)
         return user
 
+    # @classmethod
+    # def get_by_role_type(cls,data):
+    #     query = "SELECT role_type FROM users WHERE user_id = 25;"
+    #     results = connectToMySQL(cls.db).query_db(query,data)
+    #     if len(results) < 1:
+    #         return False
+    #     role = cls(results[0])
+    #     return role
+
     @classmethod
     def get_by_email(cls,data):
         query = "SELECT * FROM users WHERE email = %(email)s LIMIT 1;"
         results = connectToMySQL(cls.db).query_db(query,data)
+        print("this is the data that was passed")
+        print(data)
+        print(results)
         if len(results) < 1:
+
             return False
         user = cls(results[0])
         return user

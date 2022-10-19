@@ -1,0 +1,44 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+/* ALL PAGES */
+
+.container{
+    border: 2px dotted red;
+    margin: 2% auto;
+}
+
+.nav-top-r{
+    text-align: right;
+}
+
+.nav-bar{
+    margin: 0;
+    align-items: center;
+    text-align: center;
+}
+
+.nav-bar-title{
+    border-bottom-style: solid;
+}
+
+/* HOMEPAGE */
+
+.h-body{
+    display: flex;
+    justify-content: space-around;
+}
+
+.h-product-card{
+    height:10%;
+    width: 20%;
+    text-align: center;
+    align-content: center;
+    border: 2px dotted red;
+    margin: 2%;
+    padding: 2%;
+}
+

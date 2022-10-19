@@ -1,11 +1,28 @@
 from flask_app import app
 from flask import redirect, render_template, request, session
 from flask_app.models.order import Order
+from flask_app.models.product import Product
+from flask_app.models.user import User
 
 
 ########################################
 #### This is where we set the route ####
 ########################################
+
+
+# This route where user can view items he/she added to cart
+@app.route('/cart/add/product')
+def addToCart():
+    if 'user_id' not in session:
+        return redirect("/login_and_register")
+    
+    data = {
+        "customer_id": session["user_id"],
+        "product_id": id
+    }
+
+    product = Product.get_by_id(data)
+    return redirect("/", product = product)
 
 # # This route where user can view items he/she added to cart
 # @app.route("/cart")
@@ -33,6 +50,7 @@ from flask_app.models.order import Order
 #     Order.add(data)
 #     return render_template("checkout.html")
 
+
 # @app.route('/checkout')
 # def proceed_to_checkout():
 #     return render_template('checkout.html')
@@ -47,6 +65,7 @@ from flask_app.models.order import Order
 #     }
 #     Payment.save(data)
 #     return redirect('/')
+
 
 #####################################
 #### This is where the API stays ####
@@ -82,3 +101,4 @@ def submit_checkout():
     new_order = Order.add(data)
 
     return redirect("/customer_dashboard/" + new_order)
+
