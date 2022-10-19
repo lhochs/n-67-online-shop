@@ -28,8 +28,12 @@
 /* HOMEPAGE */
 
 .h-body{
+    width: auto;
+    height: auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
+    /* justify-content: space-around; */
 }
 
 .h-product-card{
@@ -42,3 +46,12 @@
     padding: 2%;
 }
 
+/* SELLER DASHBOARD */
+.seller-title{
+    text-align: center;
+}
+
+/* ADD PRODUCT FORM */
+.add-prod-title{
+    text-align: center;
+}
