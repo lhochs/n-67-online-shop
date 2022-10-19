@@ -10,18 +10,52 @@
     <title>Seller Dashboard</title>
 </head>
 <body>
-    <h3>Seller Dashboard</h3>
-
-    <a href="/">Return to Homepage</a>
-    <a href="/user/new_product">Add product here</a>
-    {%for i in all_products%}
-    <p>{{i.product_name}}</p>
-    <p>{{i.product_quantity}}</p>
-    <p>{{i.users.first_name}} {{i.users.last_name}} </p>
-    {%if i.seller_id == session.user_id%}
-    <a href="">Edit</a>
-    <a href="/delete/product/{{i.product_id}}">Delete</a>
-    {%endif%}
-    {%endfor%}
+    <div class="container">
+        <div class="nav-top-r">
+            <a href="">Sign Out</a>
+            <span> | </span>
+            <a href="/">Return to Homepage</a>
+        </div>
+        <div class="nav-bar">
+            <div class="nav-bar-title">
+                <h1>N 67° Online Store</h1>
+            </div>
+            <div>
+                <a href="/company">About Our Company</a>
+            </div>
+        </div>
+        <div class="seller-title">
+            <h3>Welcome Back!</h3>
+        </div>
+        <div class="seller-body">
+            <h3>All Products</h3>
+            <table>
+                <tr>
+                    <thead>
+                        <th>Product Name</th>
+                        <th>Product Quantity</th>
+                        <th>Seller</th>
+                        <th>Actions</th>
+                    </thead>
+                </tr>
+                <tbody>
+                    {%for i in all_products%}
+                    <tr>
+                        <td>{{i.product_name}}</td>
+                        <td>{{i.product_quantity}}</td>
+                        <td>{{i.users.first_name}} {{i.users.last_name}}</td>
+                        <td>
+                            {%if i.seller_id == session.user_id%}
+                            <a href="">Edit</a>
+                            <a href="/delete/product/{{i.product_id}}">Delete</a>
+                            {%endif%}
+                        </td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+            <a href="/user/new_product">Add product here</a>
+        </div>
+    </div>
 </body>
 </html>
