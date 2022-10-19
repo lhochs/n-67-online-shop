@@ -8,7 +8,7 @@ class MySQLConnection:
     def __init__(self, db):
         connection = pymysql.connect(host = 'localhost',
                                     user = 'root', 
-                                    password = os.getenv("DB_PASSWORD"),
+                                    password = "root",
                                     # password = "SriLanka",
                                     db = db,
                                     charset = 'utf8mb4',
