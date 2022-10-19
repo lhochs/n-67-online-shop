@@ -11,36 +11,45 @@
 </head>
 <body>
     <div class="container">
-        <div class="top-nav">
-            <h1 class="sCart-title">Your Shopping Cart</h1>
+        <div class="nav-bar">
+            <div class="nav-bar-title">
+                <h1>N 67° Online Store</h1>
+            </div>
+            <div>
+                <a href="/company">About Our Company</a>
+            </div>
         </div>
-        <div class="SC-body">
-            <div class="col-12">
-                <div>
+
+        <div class="sCart-top-nav">
+            <h3 class="sCart-title">Your Shopping Cart</h3>
+        </div>
+        <div class="sC-body">
+            <div class="shoppingcart">
+                <div class="sC-items">
                     {% for product_id in cart %}
                     <p>{{cart[product_id].product_img}}</p>
                     <p>{{cart[product_id].product_name}}</p>
                     <p>Quantity: {{cart[product_id].quantity}}</p>
-                    <p>Price: {{cart[product_id].quantity * cart[product_id].price_per_unit}}</p>
+                     <p>Price: {{cart[product_id].quantity * cart[product_id].price_per_unit}}</p>
                     {% endfor %}
                 </div>
+                <div class="sC-cost">
+                    <div class="subTotal">
+                        <div class="top">
+                            <h3>Subtotal: ${{sub_total}}</h3>
+                        </div>
+                        <div class="mid">
+                            <h3>Shipping: ${{shipping_cost}}</h3>
+                        </div>
+                        <div class="bottom">
+                            <h3>Tax: ${{tax_amount}}</h3>
+                        </div>
+                    </div>
+                    <div class="total">
+                        <h2>Total: ${{total}}</h2>
+                    </div>
+                </div>
             </div>
-            <div class="col-12">
-                <div class="subTotal">
-                    <div class="top">
-                        <h3>Subtotal: ${{sub_total}}</h3>
-                    </div>
-                    <div class="mid">
-                        <h3>Shipping: $0.00</h3>
-
-                    </div>
-                    <div class="bottom">
-                        <h3>Tax: ${{tax_amount}}</h3>
-                    </div>
-                </div>
-                <div class="total">
-                    <h2>Total: ${{total}}</h2>
-                </div>
                 <button type="button" class="btn btn-primary">Check Out</button>
                 <a href="/clear_cart"><button class="btn btn-danger">Clear cart</button></a>
             </div>

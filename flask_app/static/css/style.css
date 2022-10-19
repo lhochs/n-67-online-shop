@@ -49,6 +49,9 @@
     width: 100%;
 }
 
+h-product-card img {
+    width: 100%;
+}
 /* SELLER DASHBOARD */
 .seller-title{
     text-align: center;
@@ -57,4 +60,34 @@
 /* ADD PRODUCT FORM */
 .add-prod-title{
     text-align: center;
+}
+
+
+/* SHOPPING CART */
+
+.sCart-top-nav{
+    text-align: center;
+}
+
+.sC-body{
+    border: 2px dotted red;
+    text-align: center;
+}
+
+.shoppingcart{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: auto%;
+}
+
+.sC-items{
+    border: 2px dotted red;
+    width: 60%;
+}
+
+.sC-cost{
+    border: 2px dotted red;
+    width: 60%;
+    padding-top: auto;
 }
