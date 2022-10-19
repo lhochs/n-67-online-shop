@@ -21,6 +21,8 @@ def new_product():
     # If user is a buyer, redirect
     if (session["role_type"] == "customer"):
         return redirect("/")
+    
+    return render_template("add_form.html")
 
 
 @app.route("/user/add_product_to_db", methods=['POST'])
