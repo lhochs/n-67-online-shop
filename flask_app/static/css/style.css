@@ -7,7 +7,7 @@
 /* ALL PAGES */
 
 .container{
-    border: 2px dotted red;
+    /* border: 2px dotted red; */
     margin: 2% auto;
 }
 
@@ -41,7 +41,7 @@
     width: 20%;
     text-align: center;
     align-content: center;
-    border: 2px dotted red;
+    border: 2px solid rgb(27, 26, 26);
     margin: 2%;
     padding: 2%;
 }
@@ -70,24 +70,26 @@ h-product-card img {
 }
 
 .sC-body{
-    border: 2px dotted red;
+    /* border: 2px dotted red; */
     text-align: center;
 }
 
 .shoppingcart{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin: auto;
-    width: auto%;
+    width: auto;
 }
 
 .sC-items{
-    border: 2px dotted red;
+    border-right-style: solid ;
     width: 60%;
+    margin: 2%;
 }
 
 .sC-cost{
-    border: 2px dotted red;
+    /* border: 2px dotted red; */
     width: 60%;
     padding-top: auto;
+    margin: 2%;
 }
