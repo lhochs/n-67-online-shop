@@ -58,3 +58,32 @@ h-product-card img {
 .add-prod-title{
     text-align: center;
 }
+
+
+/* SHOPPING CART */
+
+.sCart-top-nav{
+    text-align: center;
+}
+
+.sC-body{
+    border: 2px dotted red;
+    text-align: center;
+}
+
+.shoppingcart{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 40%;
+}
+
+.sC-items{
+    border: 2px dotted red;
+    width: 40%;
+}
+
+.sC-cost{
+    border: 2px dotted red;
+    width: 40%;
+}
