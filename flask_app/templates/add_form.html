@@ -31,9 +31,9 @@
             <div>
                 <h3>Add a Product</h3>
             </div>
-            <form action="/user/add_product_to_db" method="post">
+            <form action="/user/add_product_to_db" method="POST">
                 <p>Product Form</p>
-                <input type="hidden" name="user_id" value="{{session.user_id}}">
+                <input type="hidden" name="seller_id" value="{{session.seller_id}}">
                 <section>
                     <label for="product_name">Product Name:</label>
                     <input type="text" name="product_name">

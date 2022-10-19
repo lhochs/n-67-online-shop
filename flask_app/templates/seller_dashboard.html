@@ -11,13 +11,16 @@
 </head>
 <body>
     <h3>Seller Dashboard</h3>
+
+    <a href="/">Return to Homepage</a>
+    <a href="/user/new_product">Add product here</a>
     {%for i in all_products%}
     <p>{{i.product_name}}</p>
     <p>{{i.product_quantity}}</p>
-    <p>{{i.users.first_name}} {{i.users.last_name}}</p>
-    {%if i.seller_id == user_id%}
+    <p>{{i.users.first_name}} {{i.users.last_name}} </p>
+    {%if i.seller_id == session.user_id%}
     <a href="">Edit</a>
-    <a href="">Delete</a>
+    <a href="/delete/product/{{i.product_id}}">Delete</a>
     {%endif%}
     {%endfor%}
 </body>

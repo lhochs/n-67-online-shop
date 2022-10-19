@@ -12,33 +12,39 @@ def currencyFormat(value):
     value = float(value)
     return "${:,.2f}".format(value)
 
-@app.route("/user/add_product")
-def add_product_cart():
+
+@app.route("/user/new_product")
+def new_product():
     if (not session):
         return redirect("/login_and_register")
+
     # If user is a buyer, redirect
     if (session["role_type"] == "customer"):
         return redirect("/")
-    return render_template("add_form.html")
+
 
 @app.route("/user/add_product_to_db", methods=['POST'])
 def add_product_to_db():
+    if (not session):
+        return redirect("/login_and_register")
+    if not Product.validate_product(request.form):
+        return redirect('/user/new_product')
     data = {
-        "product_name" : request.form["product_name"],
-        "price_per_unit" : request.form["price_per_unit"],
-        "product_description" : request.form["product_description"],
-        "product_instructions" : request.form["product_instructions"],
-        "product_quantity" : request.form["product_quantity"],
-        "product_img" : request.form["product_img"],
-        "seller_id" : session["user_id"]
-        
+        'product_name' : request.form["product_name"],
+        'product_description' : request.form["product_description"],
+        'product_instructions' : request.form["product_instructions"],
+        'product_quantity' : request.form["product_quantity"],
+        'price_per_unit' : request.form["price_per_unit"],
+        'product_img' : request.form["product_img"],
+        'seller_id' : session["user_id"]  
     }
     Product.validate_product(data)
     Product.save(data)
-    return redirect('/dashboard_seller')
+    print("jk here is the real issue")
+    return redirect('/seller_dashboard')
 
 # This is where user can edit product
-# <<<<<<< HEAD
+
 # @app.route("/user/edit_product/<id>")
 # def edit_product(id):
 #     return render_template("add_edit_product_form.html") //duplicate code what is this for?
@@ -56,7 +62,7 @@ def view_product(id):
     # }
     return render_template("view_one.html") #, product=Product.get_by_id(data), user=User.get_by_id(user_data))
     
-# =======
+
 @app.route("/user/edit_product/<product_id>")
 def edit_product(product_id):
     # If user is not logged in, redirect
@@ -83,6 +89,17 @@ def edit_product(product_id):
 
     return render_template("add_edit_product_form.html", product=product)
 
+
+@app.route('/delete/product/<int:product_id>')
+def delete_product(product_id):
+    if (not session):
+        redirect("/login_and_register")
+    data = {
+        "product_id": product_id
+    }
+    Product.delete(data)
+    return redirect('/seller_dashboard')
+
 # This will be the edit product post route
 @app.route("/user/edit_product/<product_id>/submit_edit", methods=["POST"])
 def update_product(product_id):
@@ -106,6 +123,7 @@ def single_product_view(id):
     }
     product = Product.get_by_id(data)
     return render_template("single_product_view.html", product = product)
+
 
 #####################################
 #### This is where the API stays ####
