@@ -8,26 +8,65 @@ from flask_app.models.user import User
 ########################################
 #### This is where we set the route ####
 ########################################
+# This route where user can view items he/she added to cart
+@app.route("/cart")
+def cart():
+    tax_percent = 0.09375 #hard-code
+    cart = {}
+    sub_total = 0
+    tax_amount = 0
+    total = 0
 
+    if "cart" in session:
+        cart = session["cart"]
+        sub_total = 0.00
+        total = 0
+
+        for product_id in cart:
+            sub_total += round(cart[product_id]["price_per_unit"] * cart[product_id]["quantity"], 2)
+        sub_total = round(sub_total, 2)
+
+        tax_amount = round(sub_total*tax_percent, 2)
+        total = sub_total + tax_amount
+
+    return render_template("cart.html", cart=cart, sub_total=sub_total, total=total, tax_amount=tax_amount)
 
 # This route where user can view items he/she added to cart
-@app.route('/cart/add/product')
+@app.route('/cart/add', methods=['POST'])
 def addToCart():
     if 'user_id' not in session:
-        return redirect("/login_and_register")
-    
-    data = {
-        "customer_id": session["user_id"],
-        "product_id": id
+        return {
+            "error": "Not logged in"
+        }
+
+    product_id = request.json["product_id"]
+    product_name = request.json["product_name"]
+    price_per_unit = request.json["price_per_unit"]
+    product_img = request.json["product_img"]
+
+    product = {
+        "product_img": product_img,
+        "product_name": product_name,
+        "price_per_unit": price_per_unit,
+        "quantity": 1
     }
 
-    product = Product.get_by_id(data)
-    return redirect("/", product = product)
+    # Add product to cart in session
+    if 'cart' not in session:
+        session["cart"] = {}
+        session["cart"][product_id] = product
+    else:
+        cart = session['cart']
+        if product_id in cart:
+            cart[product_id]["quantity"] += 1
+        else:
+            cart[product_id] = product
+        session['cart'] = cart
+    
+    return {
+        "success": True
+    }
 
-# # This route where user can view items he/she added to cart
-# @app.route("/cart")
-# def cart():
-#     return render_template("cart.html")
 
 # # This route where user will confirm their purchase?
 # @app.route("/checkout")
@@ -70,6 +109,11 @@ def addToCart():
 #####################################
 #### This is where the API stays ####
 #####################################
+@app.route("/clear_cart", methods=["GET"])
+def clear_cart():
+    session.pop("cart")
+    return redirect("/cart")
+
 @app.route('/orders/customer_id/order_id', methods=["GET"])
 def get_order_for_customer(customer_id, order_id):
     # Check if user logs in and user has the same id as given customer_id
