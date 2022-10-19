@@ -10,6 +10,7 @@ class Product:
         self.product_name = data['product_name']
         self.price_per_unit = data['price_per_unit']
         self.product_description = data['product_description']
+        self.product_instructions = data['product_instructions']
         self.product_quantity = data['product_quantity']
         self.product_img = data['product_img']
         self.created_at = data['created_at']
@@ -77,10 +78,10 @@ class Product:
         if len(product["product_instructions"]) <3:
             flash("Instructions must be at least 3 characters")
             is_valid = False
-        if (product["price_per_unit"]) < 1:
+        if int(product["price_per_unit"]) < 1:
             flash("Price must be at least $1")
             is_valid = False
-        if (product["quantity"]) < 1:
+        if int(product["product_quantity"]) < 1:
             flash("Must sell at least 1 unit")
             is_valid = False
         return is_valid

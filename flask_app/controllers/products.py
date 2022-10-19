@@ -21,6 +21,7 @@ def new_product():
     # If user is a buyer, redirect
     if (session["role_type"] == "customer"):
         return redirect("/")
+    return render_template("add_form.html")
 
 
 @app.route("/user/add_product_to_db", methods=['POST'])
@@ -61,7 +62,14 @@ def view_product(id):
     #     "id": session['user_id']
     # }
     return render_template("view_one.html") #, product=Product.get_by_id(data), user=User.get_by_id(user_data))
-    
+
+@app.route("/user/single_product/<int:product_id>")
+def single_product_view(product_id):
+    data = {
+        "product_id":product_id
+    }
+    return render_template("view_one.html", product = Product.get_by_id(data))
+
 
 @app.route("/user/edit_product/<product_id>")
 def edit_product(product_id):
@@ -115,14 +123,6 @@ def update_product(product_id):
         return redirect(f"/user/edit_product/{product_id}")
     Product.update(data)
     return redirect("/")
-
-@app.route("/user/single_product/<int:id>")
-def single_product_view(id):
-    data = {
-        "product_id":id
-    }
-    product = Product.get_by_id(data)
-    return render_template("single_product_view.html", product = product)
 
 
 #####################################
