@@ -41,16 +41,14 @@ class Product:
     def get_by_id(cls,data):
         query = "SELECT * FROM products WHERE product_id = %(product_id)s;"
         results = connectToMySQL(cls.db).query_db(query,data)
+        print(results)
         if len(results) < 1:
             return False
-        seller_products = []
-        for row in results:
-            seller_products.append(cls(row))
-        return seller_products
+        return cls(results[0])
 
     @classmethod
     def update(cls,data):
-        query = "UPDATE products SET(product_name=%(product_name)s,price_per_unit=%(price_per_unit)s,product_description=%(product_description)s,product_instructions=%(product_instructions)s,product_quantity=%(product_quantity)s,product_img=%(product_img)s) WHERE product_id = %(product_id)s"
+        query = "UPDATE products SET product_name=%(product_name)s,price_per_unit=%(price_per_unit)s,product_description=%(product_description)s,product_instructions=%(product_instructions)s,product_quantity=%(product_quantity)s,product_img=%(product_img)s WHERE product_id = %(product_id)s"
         return connectToMySQL(cls.db).query_db(query,data)
 
     @classmethod
@@ -78,7 +76,7 @@ class Product:
         if len(product["product_instructions"]) <3:
             flash("Instructions must be at least 3 characters")
             is_valid = False
-        if int(product["price_per_unit"]) < 1:
+        if float(product["price_per_unit"]) < 1:
             flash("Price must be at least $1")
             is_valid = False
         if int(product["product_quantity"]) < 1:
