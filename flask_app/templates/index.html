@@ -5,13 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+=======
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+>>>>>>> bfa4cee880ac719554b2dcf010818bb9d1fa6428
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='/css/style.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='/js/my_script.js') }}"></script>
     <title>N 67° Online Store</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 
 <body>
@@ -40,7 +44,7 @@
             <a href="/login_and_register">Sign in</a>
             <span> | </span>
             <a href="/login_and_register">Register</a>
-            <a href="/cart/order"><img src="{{ url_for('static', filename='/imgs/shopping_cart_icon.jpeg') }}"></a>
+            <a href="/cart"><img src="{{ url_for('static', filename='/imgs/shopping_cart_icon.jpeg') }}"></a>
         </div>
         <div class="nav-bar">
             <div class="nav-bar-title">
@@ -52,6 +56,7 @@
         </div>
         <div class="h-body">
             {% for i in all_products %}
+<<<<<<< HEAD
             <div class="h-product-card">
                 <img src="{{ url_for('static', filename='/imgs/fail-to-load-img.png') }}">
                 <!-- <p>{{i.product_img}}</p> -->
@@ -59,9 +64,84 @@
                 <p>{{i.price_per_unit | currencyFormat}}</p>
                 <a href='/cart/add/product>'>Add To Cart</a>
             </div>
+=======
+                <div class="h-product-card">
+                    <img src="{{ url_for('static', filename='/imgs/fail-to-load-img.png') }}">
+                    <!-- <p>{{i.product_img}}</p> -->
+                    <a href="/user/single_product/{{i.product_id}}">{{i.product_name}}</a>
+                    <p>{{i.price_per_unit | currencyFormat}}</p>
+                    <button class="btn btn-primary product-btn" 
+                        data-id={{i.product_id}}
+                        data-product-name={{i.product_name}}
+                        data-price-per-unit={{i.price_per_unit}}
+                        data-product-img="{{ url_for('static', filename='/imgs/fail-to-load-img.png') }}"
+                    >
+                        Add To Cart
+                    </button>
+                </div>
+>>>>>>> bfa4cee880ac719554b2dcf010818bb9d1fa6428
             {%endfor%}
         </div>
     </div>
+
+    <script>
+    (function(){
+        var productBtns = document.querySelectorAll(".product-btn");
+
+        productBtns.forEach(function(productBtn) {
+            productBtn.addEventListener("click", function(){
+                var productId = productBtn.getAttribute("data-id");
+                var productName = productBtn.getAttribute("data-product-name");
+                var pricePerUnit = parseFloat(productBtn.getAttribute("data-price-per-unit"));
+                var productImg = productBtn.getAttribute("data-product-img");
+                // var data = new FormData();
+                // data["productId"] = productId
+                var data = {
+                    product_id: productId,
+                    product_name: productName,
+                    price_per_unit: pricePerUnit,
+                    product_img: productImg
+                };
+
+                fetch('/cart/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.error) {
+                        window.location.replace('/login_and_register');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+                // var cart = sessionStorage.getItem('cart');
+                // var cartLength = parseInt(sessionStorage.getItem('cart_length') ?? 0);
+                // if (cart) {
+                //     cart = JSON.parse(cart);
+                // } else {
+                //     cart = {};
+                // }
+                
+                // var productId = productBtn.getAttribute("data-id");
+                // console.log(productId)
+
+                // if (productId in cart) {
+                //     cart[productId] += 1;
+                // } else {
+                //     cart[productId] = 1;
+                // }
+                // sessionStorage.setItem('cart_length', cartLength + 1);
+                // sessionStorage.setItem('cart', JSON.stringify(cart));
+            });
+        });
+    })();
+    </script>
+
 </body>
 
 </html>

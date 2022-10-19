@@ -27,9 +27,17 @@
 
 /* HOMEPAGE */
 
+<<<<<<< HEAD
 .h-body {
+=======
+.h-body{
+    width: auto;
+    height: auto;
+>>>>>>> bfa4cee880ac719554b2dcf010818bb9d1fa6428
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
+    /* justify-content: space-around; */
 }
 
 .h-product-card {
@@ -41,7 +49,11 @@
     margin: 2%;
     padding: 2%;
 }
+.h-product-card img {
+    width: 100%;
+}
 
+<<<<<<< HEAD
 .navbar .navbar-nav .nav-link {
     color: #000000;
     font-size: 1.1em;
@@ -68,4 +80,14 @@
 .navbar .navbar-nav {
     margin-top: 0.5em;
     border-top: 2px solid #000;
+=======
+/* SELLER DASHBOARD */
+.seller-title{
+    text-align: center;
+}
+
+/* ADD PRODUCT FORM */
+.add-prod-title{
+    text-align: center;
+>>>>>>> bfa4cee880ac719554b2dcf010818bb9d1fa6428
 }
