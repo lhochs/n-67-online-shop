@@ -46,6 +46,9 @@
     padding: 2%;
 }
 
+h-product-card img {
+    width: 100%;
+}
 /* SELLER DASHBOARD */
 .seller-title{
     text-align: center;
