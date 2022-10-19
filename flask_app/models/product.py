@@ -1,3 +1,4 @@
+from math import prod
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.models.user import User
 from flask import flash
@@ -37,7 +38,7 @@ class Product:
 
     @classmethod
     def get_by_id(cls,data):
-        query = "SELECT * FROM products WHERE id = %(id)s;"
+        query = "SELECT * FROM products WHERE product_id = %(product_id)s;"
         results = connectToMySQL(cls.db).query_db(query,data)
         if len(results) < 1:
             return False
@@ -45,6 +46,11 @@ class Product:
         for row in results:
             seller_products.append(cls(row))
         return seller_products
+
+    @classmethod
+    def update(cls,data):
+        query = "UPDATE products SET(product_name=%(product_name)s,price_per_unit=%(price_per_unit)s,product_description=%(product_description)s,product_instructions=%(product_instructions)s,product_quantity=%(product_quantity)s,product_img=%(product_img)s) WHERE product_id = %(product_id)s"
+        return connectToMySQL(cls.db).query_db(query,data)
 
     @classmethod
     def save(cls,data):
@@ -70,6 +76,12 @@ class Product:
             is_valid = False
         if len(product["product_instructions"]) <3:
             flash("Instructions must be at least 3 characters")
+            is_valid = False
+        if (product["price_per_unit"]) < 1:
+            flash("Price must be at least $1")
+            is_valid = False
+        if (product["quantity"]) < 1:
+            flash("Must sell at least 1 unit")
             is_valid = False
         return is_valid
     
