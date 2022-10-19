@@ -78,12 +78,12 @@ class Product:
         if len(product["product_instructions"]) <3:
             flash("Instructions must be at least 3 characters")
             is_valid = False
-        if int(product["price_per_unit"]) < 1:
-            flash("Price must be at least $1")
-            is_valid = False
-        if int(product["product_quantity"]) < 1:
-            flash("Must sell at least 1 unit")
-            is_valid = False
+        # if int(product["price_per_unit"]) < 1:
+        #     flash("Price must be at least $1")
+        #     is_valid = False
+        # if int(product["product_quantity"]) < 1:
+        #     flash("Must sell at least 1 unit")
+        #     is_valid = False
         return is_valid
     
     @classmethod
