@@ -14,12 +14,20 @@
         <a href="/login">Sign in</a>
         <a href="/register">Register</a>
     </div>
+    <h1>Biajiu is best</h1>
+    <h1>{{product.product_name}}</h1>
+    
+    <p>{{product.product_description}}</p>
 
-    {%for i in all_products%}
+
+
+    <h1>How to care for your plant</h1>
+    <p>{{product.product_instruction}}</p>
+    <!-- {%for i in products%}
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src={{i.product_image}} class="d-block w-100" alt="...">
+                <img src={{product.product_image}} class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
                 <img src="..." class="d-block w-100" alt="...">
@@ -38,14 +46,12 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
-    </div>
+    </div> -->
 
     <!-- /# not sure if this will sync with the above carousel image #/ -->
-    <h1>{{i.product_name}}</h1>
-    <p>{{i.product_description}}</p>
 
-    <h1>How to care for your plant</h1>
-    <p>{{i.product_instruction}}</p>
+
+    <!-- {%endfor%} -->
 </body>
 
 </html>

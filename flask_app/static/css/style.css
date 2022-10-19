@@ -45,6 +45,9 @@
     margin: 2%;
     padding: 2%;
 }
+.h-product-card img {
+    width: 100%;
+}
 
 h-product-card img {
     width: 100%;
