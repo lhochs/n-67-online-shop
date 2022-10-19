@@ -50,16 +50,18 @@ def addToCart():
         "price_per_unit": price_per_unit,
         "quantity": 1
     }
-    
+
     # Add product to cart in session
     if 'cart' not in session:
         session["cart"] = {}
         session["cart"][product_id] = product
     else:
-        if product_id in session['cart']:
-            session["cart"][product_id]["quantity"] += 1
+        cart = session['cart']
+        if product_id in cart:
+            cart[product_id]["quantity"] += 1
         else:
-            session["cart"][product_id] = product
+            cart[product_id] = product
+        session['cart'] = cart
     
     return {
         "success": True
