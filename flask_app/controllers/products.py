@@ -92,6 +92,16 @@ def edit_product(product_id):
 
     return render_template("add_edit_product_form.html", product=product)
 
+@app.route('/delete/product/<int:product_id>')
+def delete_product(product_id):
+    if (not session):
+        redirect("/login_and_register")
+    data = {
+        "product_id": product_id
+    }
+    Product.delete(data)
+    return redirect('/seller_dashboard')
+
 #####################################
 #### This is where the API stays ####
 #####################################
