@@ -11,17 +11,23 @@ from flask_app.models.user import User
 # This route where user can view items he/she added to cart
 @app.route("/cart")
 def cart():
-    cart = session["cart"]
     tax_percent = 0.09375 #hard-code
-    sub_total = 0.00
+    cart = {}
+    sub_total = 0
+    tax_amount = 0
     total = 0
 
-    for product_id in cart:
-        sub_total += round(cart[product_id]["price_per_unit"] * cart[product_id]["quantity"], 2)
-    sub_total = round(sub_total, 2)
+    if "cart" in session:
+        cart = session["cart"]
+        sub_total = 0.00
+        total = 0
 
-    tax_amount = round(sub_total*tax_percent, 2)
-    total = sub_total + tax_amount
+        for product_id in cart:
+            sub_total += round(cart[product_id]["price_per_unit"] * cart[product_id]["quantity"], 2)
+        sub_total = round(sub_total, 2)
+
+        tax_amount = round(sub_total*tax_percent, 2)
+        total = sub_total + tax_amount
 
     return render_template("cart.html", cart=cart, sub_total=sub_total, total=total, tax_amount=tax_amount)
 
@@ -101,6 +107,11 @@ def addToCart():
 #####################################
 #### This is where the API stays ####
 #####################################
+@app.route("/clear_cart", methods=["GET"])
+def clear_cart():
+    session.pop("cart")
+    return redirect("/cart")
+
 @app.route('/orders/customer_id/order_id', methods=["GET"])
 def get_order_for_customer(customer_id, order_id):
     # Check if user logs in and user has the same id as given customer_id
