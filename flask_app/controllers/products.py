@@ -41,7 +41,7 @@ def add_product_to_db():
     }
     Product.validate_product(data)
     Product.save(data)
-    print("jk here is the real issue")
+    # print("jk here is the real issue")
     return redirect('/seller_dashboard')
 
 # This is where user can edit product
@@ -51,8 +51,8 @@ def add_product_to_db():
 #     return render_template("add_edit_product_form.html") //duplicate code what is this for?
 
 #route to view one product
-@app.route("/product/<id>")
-def view_product(id):
+# @app.route("/product/<id>")
+# def view_product(id):
     # if 'user_id' not in session:
     #     return redirect('/')
     # data = {
@@ -61,13 +61,18 @@ def view_product(id):
     # user_data = {
     #     "id": session['user_id']
     # }
-    return render_template("view_one.html") #, product=Product.get_by_id(data), user=User.get_by_id(user_data))
+    # return render_template("view_one.html") #, product=Product.get_by_id(data), user=User.get_by_id(user_data))
 
 @app.route("/user/single_product/<int:id>")
 def single_product_view(id):
+    if (not session):
+        redirect("/login_and_register")
     data = {
         "product_id":id
     }
+    temp_product = Product.get_by_id(data)
+    print(temp_product )
+    print(temp_product.product_description)
     return render_template("view_one.html", product = Product.get_by_id(data))
 
 
@@ -75,7 +80,7 @@ def single_product_view(id):
 def edit_product(product_id):
     # If user is not logged in, redirect
     if (not session):
-        redirect("/login")
+        redirect("/login_and_register")
 
     # If user is a buyer, redirect
     if (session["role_type"] == "customer"):

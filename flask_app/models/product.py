@@ -40,6 +40,7 @@ class Product:
     @classmethod
     def get_by_id(cls,data):
         query = "SELECT * FROM products WHERE product_id = %(product_id)s;"
+        print(query)
         results = connectToMySQL(cls.db).query_db(query,data)
         print(results)
         if len(results) < 1:
