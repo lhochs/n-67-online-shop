@@ -20,6 +20,7 @@ class Product:
     def get_all(cls):
         query = "SELECT * FROM products;"
         results = connectToMySQL(cls.db).query_db(query)
+        print(results)
         products = []
         for row in results:
             products.append(cls(row))
@@ -46,8 +47,10 @@ class Product:
 
     @classmethod
     def save(cls,data):
-        query = "INSERT INTO products(product_name,price_per_unit,product_description,product_instructions,product_quantity,product_img,seller_id) VALUES(%(product_name)s,%(price_per_unit)s,%(product_description)s,%(product_instructions)s,%(product_quantity)s,%(product_img)s,%(seller_id)s);"
-        print (connectToMySQL(cls.db).query_db(query,data))
+        query = "INSERT INTO products(product_name,product_description,product_instructions,product_quantity,price_per_unit,product_img,seller_id) VALUES(%(product_name)s,%(product_description)s,%(product_instructions)s,%(product_quantity)s,%(price_per_unit)s,%(product_img)s,%(seller_id)s);"
+        print(query)
+        print("LOOK HERE!!!")
+        return (connectToMySQL(cls.db).query_db(query,data))
 
     @classmethod
     def delete(cls,data):
@@ -57,13 +60,13 @@ class Product:
     @staticmethod
     def validate_product(product):
         is_valid = True
-        if len(product["name"]) < 2:
+        if len(product["product_name"]) < 3:
             flash("Name must be at least 3 characters")
             is_valid = False
-        if len(product["description"]) < 2:
+        if len(product["product_description"]) < 3:
             flash("Description must be at least 3 characters")
             is_valid = False
-        if len(product["instructions"]) < 2:
+        if len(product["product_instructions"]) <3:
             flash("Instructions must be at least 3 characters")
             is_valid = False
         return is_valid
