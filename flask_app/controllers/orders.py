@@ -139,10 +139,6 @@ def clear_cart():
 #####################################
 #### This is where the API stays ####
 #####################################
-@app.route("/clear_cart", methods=["GET"])
-def clear_cart():
-    session.pop("cart")
-    return redirect("/cart")
 
 @app.route('/orders/customer_id/order_id', methods=["GET"])
 def get_order_for_customer(customer_id, order_id):

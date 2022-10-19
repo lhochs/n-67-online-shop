@@ -78,15 +78,16 @@ h-product-card img {
     display: flex;
     justify-content: space-between;
     margin: auto;
-    width: 40%;
+    width: auto%;
 }
 
 .sC-items{
     border: 2px dotted red;
-    width: 40%;
+    width: 60%;
 }
 
 .sC-cost{
     border: 2px dotted red;
-    width: 40%;
+    width: 60%;
+    padding-top: auto;
 }
