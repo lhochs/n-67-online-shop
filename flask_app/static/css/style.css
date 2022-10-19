@@ -28,8 +28,12 @@
 /* HOMEPAGE */
 
 .h-body{
+    width: auto;
+    height: auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
+    /* justify-content: space-around; */
 }
 
 .h-product-card{
