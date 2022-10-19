@@ -16,7 +16,7 @@ def cart():
     cart={}
     sub_total = 0.00
     tax_amount = 0
-    shipping_cost = 8.00
+    shipping_cost = 0.00
     total = 0
 
     if "cart" in session:
