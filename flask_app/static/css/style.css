@@ -42,3 +42,104 @@
     padding: 2%;
 }
 
+
+/* Add and Edit forms*/
+.A1{
+    text-align: center;
+}
+
+.A2{
+    align-items: center;
+    display: flex;
+    padding-left: 630px;
+}
+
+.A3{
+    padding-right: 200px;
+}
+
+.A4{
+    padding-right: 3px;
+}
+
+.A5{
+    padding-left: 3px;
+}
+
+.A6{
+    padding-bottom: 10px;
+}
+
+.A7{
+    display: inline-block;
+    position: center;
+    border: solid black 1px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.A8{
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-bottom: 50px;
+    align-items: baseline;
+    align-items: center;
+    display: flex;
+}
+
+.A9{
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-bottom: 50px;
+    align-items: baseline;
+    align-items: center;
+    display: flex;
+}
+
+.A10{
+    padding-left: 1px;
+    padding-right: 10px;
+    align-items: baseline;
+    align-items: center;
+    display: flex;
+}
+
+.A11{
+    padding-right: 1px;
+    padding-left: 600px;
+}
+
+.A12{
+    padding-bottom: 15px;
+}
+
+.B1{
+    padding-right: 100px;
+}
+
+.B2{
+    padding-right: 85px;
+}
+
+.B3{
+    padding-right: 90px;
+}
+
+.B4{
+    padding-right: 90px;
+}
+
+.B5{
+    padding-right: 30px;
+}
+
+.B6{
+    
+    padding-right: 65px;
+}
+
+.B7{
+    padding-right: 37px;
+}

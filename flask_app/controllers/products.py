@@ -1,7 +1,7 @@
 #from crypt import methods
 from flask_app import app
 from flask import redirect, render_template, request, session
-from flask_app.models.product import Product, User
+from flask_app.models.product import Product
 
 ########################################
 #### This is where we set the route ####
@@ -16,16 +16,16 @@ def currencyFormat(value):
     value = float(value)
     return "${:,.2f}".format(value)
 
-# @app.route("/user/add_product")
-# def add_product_cart():
-#     if (not session):
-#         return redirect("/login_and_register")
+@app.route("/user/add_product")
+def add_product_cart():
+    if (not session):
+        return redirect("/login_and_register")
     
 
     # If user is a buyer, redirect
-    # if (session["role_type"] == "customer"):
-    #     return redirect("/")
-    # return render_template("add_form.html")
+    if (session["role_type"] == "customer"):
+        return redirect("/")
+    return render_template("add_form.html")
 
 @app.route("/user/add_product_to_db", methods=['POST'])
 def add_product_to_db():
@@ -43,25 +43,6 @@ def add_product_to_db():
     return redirect('/dashboard_seller')
 
 # This is where user can edit product
-# <<<<<<< HEAD
-# @app.route("/user/edit_product/<id>")
-# def edit_product(id):
-#     return render_template("add_edit_product_form.html") //duplicate code what is this for?
-
-#route to view one product
-@app.route("/product/<id>")
-def view_product(id):
-    # if 'user_id' not in session:
-    #     return redirect('/')
-    # data = {
-    #     "id": id
-    # }
-    # user_data = {
-    #     "id": session['user_id']
-    # }
-    return render_template("view_one.html") #, product=Product.get_by_id(data), user=User.get_by_id(user_data))
-    
-# =======
 @app.route("/user/edit_product/<product_id>")
 def edit_product(product_id):
     # If user is not logged in, redirect
@@ -98,4 +79,3 @@ def api_add_product():
 @app.route("/api/edit_product")
 def api_edit_product():
     return
-
