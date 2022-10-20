@@ -11,7 +11,6 @@ def currencyFormat(value):
     value = float(value)
     return "${:,.2f}".format(value)
 
-
 @app.route("/user/new_product")
 def new_product():
     if (not session):

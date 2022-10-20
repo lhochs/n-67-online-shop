@@ -36,8 +36,8 @@
         <div class="h-body">
             {% for i in all_products %}
                 <div class="h-product-card">
-                    <img src="{{ url_for('static', filename='/imgs/fail-to-load-img.png') }}">
-                    <!-- <p>{{i.product_img}}</p> -->
+                    <img src="{{ url_for('static', filename='/imgs/' + i.product_img) }}">
+
                     <a href="/user/single_product/{{i.product_id}}">{{i.product_name}}</a>
                     <p>{{i.price_per_unit | currencyFormat}}</p>
                     <button class="btn btn-primary product-btn" 
