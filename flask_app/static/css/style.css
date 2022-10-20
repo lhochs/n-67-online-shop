@@ -8,14 +8,18 @@
 
 .container{
     /* border: 2px dotted red; */
-    margin: 2% auto;
+    margin: auto;
+    background-color: white;
 }
 
 .nav-top-r{
     text-align: right;
+    background-color:white;
 }
 
 .nav-bar{
+    /* border: 2px dotted purple; */
+    width: 100%;
     margin: 0;
     align-items: center;
     text-align: center;
@@ -23,11 +27,13 @@
 
 .nav-bar-title{
     border-bottom-style: solid;
+    background-color:white;
 }
 
 /* HOMEPAGE */
 
 .h-body{
+    background-image: linear-gradient(to right,lightblue,white);
     width: auto;
     height: auto;
     display: flex;
@@ -41,6 +47,7 @@
     max-width: 20%;
     text-align: center;
     align-content: center;
+    background-color: white;
     border: 2px solid rgb(27, 26, 26);
     margin: 2%;
     padding: 2%;
@@ -59,9 +66,10 @@
     text-align: center;
     padding-bottom: 10px;
 }
-* Add and Edit forms*/
+/*  Add and Edit forms*/ 
 .A1{
     text-align: center;
+    padding-bottom: 10px;
 }
 
 .A2{
@@ -89,7 +97,7 @@
 .A7{
     display: inline-block;
     position: center;
-    border: solid black 1px;
+    border: solid black 2px;
     margin-left: 80px;
     padding-top: 50px;
     padding-bottom: 50px;
