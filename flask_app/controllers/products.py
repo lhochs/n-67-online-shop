@@ -72,7 +72,7 @@ def single_product_view(id):
     }
     temp_product = Product.get_by_id(data)
     print(temp_product )
-    print(temp_product.product_description)
+    print(temp_product.product_instructions)
     return render_template("view_one.html", product = Product.get_by_id(data))
 
 

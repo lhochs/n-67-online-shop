@@ -24,12 +24,14 @@
                 <a href="/company">About Our Company</a>
             </div>
         </div>
-
-    <h1>{{product.product_name}}</h1>
-    <p>{{product.product_description}}</p>
-    <p>How to care for your plant</p>
-    <p>{{product.product_instruction}}</p>
+        <div class="vw-product-card">
+            <h3>{{product.product_name}}</h3>
+            <h4>{{product.price_per_unit | currencyFormat}}</h4>
+            <p>{{product.product_description}}</p>
+            <p>{{product.product_instructions}}</p>
+        </div>
     </div>
+
     <!-- {%for i in products%}
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
