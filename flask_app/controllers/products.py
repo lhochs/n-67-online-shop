@@ -126,7 +126,7 @@ def update_product():
     if not Product.validate_product(data):
         return redirect("/")
     Product.update(data)
-    return redirect("/")
+    return redirect("/seller_dashboard")
 
 
 #####################################
