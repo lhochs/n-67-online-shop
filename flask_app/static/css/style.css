@@ -10,6 +10,7 @@
     /* border: 2px dotted red; */
     margin: auto;
     background-color: white;
+    padding: 2%;
 }
 
 .nav-top-r{
@@ -181,14 +182,38 @@
 }
 
 .B9{
-    background-color: lightblue;
+    background-image: radial-gradient( lightblue ,white);
     padding-top: 0px;
 }
 
+/* SINGLE VIEW/PRODUCT */
 
+.sv-body{
+    background-image: radial-gradient( lightblue ,white);
+}
+.sv-product-card{
+    /* border: 2pt dotted red; */
+    width: 50%;
+    margin: auto;
+    padding: 2%;
+    /* background-color: aliceblue; */
+}
 
+.sv-product-card img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    padding: 5%;
+}
 
+.sv-title{
+    text-align: center;
+}
 
+.sv-price{
+    text-align: center;
+}
 
 /* SHOPPING CART */
 
@@ -228,4 +253,20 @@
 
 .total{
     padding: 3%;
+}
+
+/* OUR COMPANY */
+
+body{
+    background-image: radial-gradient( lightblue ,white);
+}
+
+.comp-body{
+    width: 80%;
+    margin: auto;
+}
+
+.comp-title{
+    text-align: center;
+    padding-bottom: 2%;
 }

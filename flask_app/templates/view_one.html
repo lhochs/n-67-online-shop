@@ -24,10 +24,19 @@
                 <a href="/company">About Our Company</a>
             </div>
         </div>
-
-    <h1>{{product.product_name}}</h1>
-    <p>{{product.product_description}}</p>
-    <p>{{product.product_instructions}}</p>
+        <div class="sv-body">
+            <div class="sv-product-card">
+                <div class="img-siz">
+                    <img src="{{ url_for('static', filename='/imgs/' + product.product_img) }}">
+                </div>
+                <h3 class="sv-title">{{product.product_name}}</h3>
+                <p class="sv-price">Price: {{product.price_per_unit | currencyFormat}}</p>
+                <h5>Description: </h5>
+                <p>{{product.product_description}}</p>
+                <h5>Instructions: </h5>
+                <p>{{product.product_instructions}}</p>
+            </div>
+        </div>
     </div>
     <!-- {%for i in products%}
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
