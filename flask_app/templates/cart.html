@@ -27,7 +27,8 @@
             <div class="shoppingcart">
                 <div class="sC-items">
                     {% for product_id in cart %}
-                    <p>{{cart[product_id].product_img}}</p>
+                    <img src="{{ url_for('static', filename='/imgs/fail-to-load-img.png') }}" alt="failed to load">
+                    <!-- <p>{{cart[product_id].product_img}}</p> -->
                     <p>{{cart[product_id].product_name}}</p>
                     <p>Quantity: {{cart[product_id].quantity}}</p>
                      <p>Price: {{cart[product_id].quantity * cart[product_id].price_per_unit| currencyFormat}}</p>
