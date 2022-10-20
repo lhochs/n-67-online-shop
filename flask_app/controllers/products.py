@@ -1,4 +1,3 @@
-from crypt import methods
 from dataclasses import dataclass
 from flask_app import app
 from flask import redirect, render_template, request, session
