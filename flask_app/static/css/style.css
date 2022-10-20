@@ -60,6 +60,7 @@ h-product-card img {
 /* ADD PRODUCT FORM */
 .add-prod-title{
     text-align: center;
+    padding-bottom: 10px;
 }
 * Add and Edit forms*/
 .A1{
@@ -92,11 +93,11 @@ h-product-card img {
     display: inline-block;
     position: center;
     border: solid black 1px;
-    margin-left: 180px;
+    margin-left: 80px;
     padding-top: 50px;
     padding-bottom: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 80px;
+    padding-right: 10px;
 }
 
 .A8{
