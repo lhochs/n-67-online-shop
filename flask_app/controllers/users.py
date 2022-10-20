@@ -5,7 +5,7 @@ from flask_app.models.order import Order
 from flask_app.models.product import Product
 from flask_bcrypt import Bcrypt
 
-bcrypt = Bcrypt(app)
+bcrypt = Bcrypt(app) 
 
 ########################################
 #### This is where we set the route ####
