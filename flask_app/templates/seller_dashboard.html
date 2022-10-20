@@ -46,7 +46,7 @@
                         <td>{{i.users.first_name}} {{i.users.last_name}}</td>
                         <td>
                             {%if i.seller_id == session.user_id%}
-                            <a href="">Edit</a>
+                            <a href="/user/edit_product/{{i.product_id}}">Edit</a>
                             <a href="/delete/product/{{i.product_id}}">Delete</a>
                             {%endif%}
                         </td>
