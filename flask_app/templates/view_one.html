@@ -3,26 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N 67° Online Store</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='/css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='/js/my_script.js') }}"></script>
+    <title>N 67° Online Store</title>
 </head>
 
 <body>
-    <div>
-        <h1>N 67°</h1>
-        <a href="/login">Sign in</a>
-        <a href="/register">Register</a>
-    </div>
-    <h1>Biajiu is best</h1>
+    <div class="container">
+        <div class="nav-top-r">
+            <a href="/">Return to Home Page</a>
+            <a href="/cart"><img src="{{ url_for('static', filename='/imgs/shopping_cart_icon.jpeg') }}"></a>
+        </div>
+        <div class="nav-bar">
+            <div class="nav-bar-title">
+                <h1>N 67° Online Store</h1>
+            </div>
+            <div>
+                <a href="/company">About Our Company</a>
+            </div>
+        </div>
+
     <h1>{{product.product_name}}</h1>
-    
     <p>{{product.product_description}}</p>
-
-
-
-    <h1>How to care for your plant</h1>
+    <p>How to care for your plant</p>
     <p>{{product.product_instruction}}</p>
+    </div>
     <!-- {%for i in products%}
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">

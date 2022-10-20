@@ -67,7 +67,7 @@ SELECT * FROM users WHERE email = "alan@yahoo.com" LIMIT 1;
 
 SELECT *
 FROM PRODUCTS;
-
+SELECT * FROM products WHERE product_id = 500;
 SELECT *
 FROM ORDERDETAILS;
 

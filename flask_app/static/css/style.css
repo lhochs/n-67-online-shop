@@ -6,8 +6,13 @@
 
 /* ALL PAGES */
 
+<<<<<<< HEAD
 .container {
     border: 2px dotted red;
+=======
+.container{
+    /* border: 2px dotted red; */
+>>>>>>> 76a0ff78fea3739929ab04d46090475909a0d1a3
     margin: 2% auto;
 }
 
@@ -45,7 +50,7 @@
     width: 20%;
     text-align: center;
     align-content: center;
-    border: 2px dotted red;
+    border: 2px solid rgb(27, 26, 26);
     margin: 2%;
     padding: 2%;
 }
@@ -53,6 +58,7 @@
     width: 100%;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 .navbar .navbar-nav .nav-link {
     color: #000000;
@@ -81,6 +87,11 @@
     margin-top: 0.5em;
     border-top: 2px solid #000;
 =======
+=======
+h-product-card img {
+    width: 100%;
+}
+>>>>>>> 76a0ff78fea3739929ab04d46090475909a0d1a3
 /* SELLER DASHBOARD */
 .seller-title{
     text-align: center;
@@ -89,5 +100,40 @@
 /* ADD PRODUCT FORM */
 .add-prod-title{
     text-align: center;
+<<<<<<< HEAD
 >>>>>>> bfa4cee880ac719554b2dcf010818bb9d1fa6428
+=======
+}
+
+
+/* SHOPPING CART */
+
+.sCart-top-nav{
+    text-align: center;
+}
+
+.sC-body{
+    /* border: 2px dotted red; */
+    text-align: center;
+}
+
+.shoppingcart{
+    display: flex;
+    /* justify-content: space-between; */
+    margin: auto;
+    width: auto;
+}
+
+.sC-items{
+    border-right-style: solid ;
+    width: 60%;
+    margin: 2%;
+}
+
+.sC-cost{
+    /* border: 2px dotted red; */
+    width: 60%;
+    padding-top: auto;
+    margin: 2%;
+>>>>>>> 76a0ff78fea3739929ab04d46090475909a0d1a3
 }
