@@ -86,19 +86,28 @@ padding: 2%;
 .shoppingcart{
     display: flex;
     /* justify-content: space-between; */
-    margin: auto;
+    /* margin: auto; */
     width: auto;
 }
 
 .sC-items{
     border-right-style: solid ;
     width: 60%;
-    margin: 2%;
+    margin: 2% 0 2% 2%;
 }
 
 .sC-cost{
     /* border: 2px dotted red; */
     width: 60%;
     padding-top: auto;
-    margin: 2%;
+    margin: 2% 2% 2% 0;
+}
+
+.cost{
+    padding: 3%;
+    border-bottom-style: solid;
+}
+
+.total{
+    padding: 3%;
 }
