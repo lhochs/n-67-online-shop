@@ -16,6 +16,10 @@ def index():
     # user_id = session["user_id"]
     return render_template("index.html", all_products = Product.get_all())
 
+@app.route("/company")
+def our_team():
+    return render_template("our_team.html")
+
 @app.route("/login_and_register")
 def login_and_register():
     return render_template("login.html")
