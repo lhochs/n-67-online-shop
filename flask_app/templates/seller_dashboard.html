@@ -29,18 +29,20 @@
         </div>
         <div class="seller-body">
             <h3>All Products</h3>
-            <table>
+            <table class="table table-hover">
                 <tr>
                     <thead>
-                        <th>Product Name</th>
-                        <th>Product Quantity</th>
-                        <th>Seller</th>
-                        <th>Actions</th>
+                        <th scope="col">Product ID #</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Product Quantity</th>
+                        <th scope="col">Seller</th>
+                        <th scope="col">Actions</th>
                     </thead>
                 </tr>
                 <tbody>
                     {%for i in all_products%}
                     <tr>
+                        <th scope="row">{{i.product_id}}</td>
                         <td>{{i.product_name}}</td>
                         <td>{{i.product_quantity}}</td>
                         <td>{{i.users.first_name}} {{i.users.last_name}}</td>

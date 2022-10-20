@@ -37,8 +37,8 @@
 }
 
 .h-product-card{
-    height:10%;
-    width: 20%;
+    max-height: max-content;
+    max-width: 20%;
     text-align: center;
     align-content: center;
     border: 2px solid rgb(27, 26, 26);
@@ -49,9 +49,6 @@
     width: 100%;
 }
 
-h-product-card img {
-    width: 100%;
-}
 /* SELLER DASHBOARD */
 .seller-title{
     text-align: center;
