@@ -9,73 +9,79 @@
     <script type="text/javascript" src="{{ url_for('static', filename='/js/my_script.js') }}"></script>
     <title>N 67° Online Store</title>
 </head>
-<body>
-    <div class="container">
-        <div class="nav-top-r">
-            <a href="">Sign Out</a>
-            <span> | </span>
-            <a href="/">Return to Homepage</a>
-        </div>
-        <div class="nav-bar">
-            <div class="nav-bar-title">
-                <h1>N 67° Online Store</h1>
+<div class="B9">
+    <body>
+        <div class="container">
+            <div class="nav-top-r">
+                <a href="">Sign Out</a>
+                <span> | </span>
+                <a href="/">Return to Homepage</a>
+            </div>
+            <div class="nav-bar">
+                <div class="nav-bar-title">
+                    <h1>N 67° Online Store</h1>
+                </div>
+                <div>
+                    <a href="/company">About Our Company</a>
+                </div>
+            </div>
+            <div class="add-prod-title">
+                <h3>Add a Product</h3>
             </div>
             <div>
-                <a href="/company">About Our Company</a>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
             </div>
-        </div>
-        <div class="add-prod-title">
-            <h3>Add a Product</h3>
-        </div>
-        <div>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <p>{{message}}</p>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-        </div>
-            <form action="/user/add_product_to_db" method="post">
-                <div class="A7">
-                    <input type="hidden" name="user_id" value="{{session.user_id}}">
-                    <div class="A8">
-                        <section class="B1">
-                            <label class="B6" for="product_name">Product Name:</label>
-                            <input type="text" name="product_name">
-                        </section>
-                        <section>
-                            <label class="B7" for="product_quantity">Quantity:</label>
-                            <input type="text" name="product_quantity">
-                        </section>
+                <form action="/user/add_product_to_db" method="post">
+                    <div class="B8">
+                        <div class="A7">
+                            <input type="hidden" name="user_id" value="{{session.user_id}}">
+                            <div class="A8">
+                                <section class="B1">
+                                    <label class="B6" for="product_name">Product Name:</label>
+                                    <input type="text" name="product_name">
+                                </section>
+                                <section>
+                                    <label class="B7" for="product_quantity">Quantity:</label>
+                                    <input type="text" name="product_quantity">
+                                </section>
+                            </div>
+                            <div class="A9">
+                                <section class="B2">
+                                    <label class="B4" for="product_description">Description:</label>
+                                    <textarea  name="product_description" cols="25" rows="6" ></textarea>
+                                </section>
+                                <section>
+                                    <label  for="price_per_unit">Price per unit:</label>
+                                    <input type="number" name="price_per_unit">
+                                </section>
+                            </div>
+                            <div class="A10">
+                                <section class="B3">
+                                    <label class="B5" for="product_instructions">Product Instructions:</label>
+                                    <textarea name="product_instructions" cols="25" rows="6" ></textarea>
+                                </section>
+                                <section>
+                                    <label for="product_img">Upload Image:</label>
+                                    <input type="file" name="product_img">
+                                </section>
+                            </div>
+                            <section class="A11">
+                                <button type="submit">Add Product</button>
+                            </section>
+                        </div>
+    
                     </div>
-                    <div class="A9">
-                        <section class="B2">
-                            <label class="B4" for="product_description">Description:</label>
-                            <textarea  name="product_description" cols="25" rows="6" ></textarea>
-                        </section>
-                        <section>
-                            <label  for="price_per_unit">Price per unit:</label>
-                            <input type="number" name="price_per_unit">
-                        </section>
-                    </div>
-                    <div class="A10">
-                        <section class="B3">
-                            <label class="B5" for="product_instructions">Product Instructions:</label>
-                            <textarea name="product_instructions" cols="25" rows="6" ></textarea>
-                        </section>
-                        <section>
-                            <label for="product_img">Upload Image:</label>
-                            <input type="file" name="product_img">
-                        </section>
-                    </div>
-                    <section class="A11">
-                        <button type="submit">Add Product</button>
-                    </section>
-                </div>
-            </form>
-        </main>
+                </form>
+            </main>
+    
+            </div>
+    </body>
 
-        </div>
-</body>
+</div>
 </html>

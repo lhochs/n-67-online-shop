@@ -95,6 +95,7 @@
     padding-bottom: 50px;
     padding-left: 80px;
     padding-right: 10px;
+    background-color: white;
 }
 
 .A8{
@@ -160,6 +161,14 @@
 .B7{
     padding-right: 37px;
 }
+
+.B9{
+    background-color: lightblue;
+    padding-top: 0px;
+}
+
+
+
 
 
 
