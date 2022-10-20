@@ -31,34 +31,45 @@
             <div>
                 <h3>Edit {{product.product_name}}</h3>
             </div>
-            <form action="/user/edit_product/{{product.id}}" method="post">
-                <p>Product Form</p>
-                <input type="hidden" name="user_id" value="{{session.user_id}}">
-                <section>
-                    <label for="product_name">Product Name:</label>
-                    <input type="text" name="product_name" value="{{product.product_name}}">
-                </section>
-                <section>
-                    <label for="product_description">Description:</label>
-                    <textarea name="product_description" cols="50" rows="4" value="{{product.product_description}}"></textarea>
-                </section>
-                <section>
-                    <label for="product_instructions">Product Instructions:</label>
-                    <textarea name="product_instructions" cols="50" rows="4" value="{{product.product_instructions}}"></textarea>
-                </section>
-                <section>
-                    <label for="product_quantity">Quantity:</label>
-                    <input type="text" name="product_quantity" value="{{product.product_quantity}}">
-                </section>
-                <section>
-                    <label for="price_per_unit">Price per unit:</label>
-                    <input type="number" name="price_per_unit" value="{{product.price_per_unit}}">
-                </section>
-                <section>
-                    <label for="product_img">Upload Image:</label>
-                    <input type="text" name="product_img">
-                </section>
-                <button type="submit">Add Product</button>
+            <form action="/user/edit_product/submit_edit" method="post">
+                <div class="A7">
+                    <input type="hidden" name="user_id" value="{{session.user_id}}">
+                    <input type="hidden" name="product_id" value="{{product.product_id}}">
+                    <div class="A8">
+                        <section class="B1">
+                            <label class="B6" for="product_name">Product Name:</label>
+                            <input type="text" name="product_name" value="{{product.product_name}}">
+                        </section>
+                        <section>
+                            <label class="B7" for="product_quantity">Quantity:</label>
+                            <input type="text" name="product_quantity" value="{{product.product_quantity}}">
+                        </section>
+                    </div>
+                    <div class="A9">
+                        <section class="B2">
+                            <label class="B4" for="product_description">Description:</label>
+                            <textarea name="product_description" cols="50" rows="4" >{{product.product_description}}</textarea>
+                        </section>
+                        <section>
+                            <label for="price_per_unit">Price per unit:</label>
+                            <input type="number" name="price_per_unit" value="{{product.price_per_unit}}">
+                        </section>
+                    </div>
+                    <div>
+                        <section class="A10">
+                            <label class="B3" for="product_instructions">Product Instructions:</label>
+                            <textarea class="B5" name="product_instructions" cols="50" rows="4" >{{product.product_instructions}}</textarea>
+                        </section>
+                        <section>
+                            <label for="product_img">Upload Image:</label>
+                            <input type="text" name="product_img">
+                        </section>
+                    </div>
+                    <section class="A11">
+                        <button type="submit">Add Product</button>
+                    </section>
+
+                </div>
             </form>
         </main>
 

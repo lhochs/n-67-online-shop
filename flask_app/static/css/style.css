@@ -28,8 +28,12 @@
 /* HOMEPAGE */
 
 .h-body{
+    width: auto;
+    height: auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
+    /* justify-content: space-around; */
 }
 
 .h-product-card{
@@ -40,6 +44,9 @@
     border: 2px dotted red;
     margin: 2%;
     padding: 2%;
+}
+.h-product-card img {
+    width: 100%;
 }
 
 
@@ -74,6 +81,7 @@
     display: inline-block;
     position: center;
     border: solid black 1px;
+    margin-left: 180px;
     padding-top: 50px;
     padding-bottom: 50px;
     padding-left: 50px;
@@ -142,4 +150,43 @@
 
 .B7{
     padding-right: 37px;
+}
+/* SELLER DASHBOARD */
+.seller-title{
+    text-align: center;
+}
+
+/* ADD PRODUCT FORM */
+.add-prod-title{
+    text-align: center;
+}
+
+
+/* SHOPPING CART */
+
+.sCart-top-nav{
+    text-align: center;
+}
+
+.sC-body{
+    border: 2px dotted red;
+    text-align: center;
+}
+
+.shoppingcart{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: auto;
+}
+
+.sC-items{
+    border: 2px dotted red;
+    width: 60%;
+}
+
+.sC-cost{
+    border: 2px dotted red;
+    width: 60%;
+    padding-top: auto;
 }

@@ -10,6 +10,23 @@
     <title>N 67° Online Store</title>
 </head>
 <body>
+    <div class="container">
+        <div class="nav-top-r">
+            <a href="">Sign Out</a>
+            <span> | </span>
+            <a href="/">Return to Homepage</a>
+        </div>
+        <div class="nav-bar">
+            <div class="nav-bar-title">
+                <h1>N 67° Online Store</h1>
+            </div>
+            <div>
+                <a href="/company">About Our Company</a>
+            </div>
+        </div>
+        <div class="add-prod-title">
+            <h3>Add a Product</h3>
+        </div>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
@@ -17,7 +34,7 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        <div class="A1">
+        <!--<div class="A1">
             <div class="A2">
                 <h1 class="A3">N 67°</h1>
                 <a href="/login" class="A4">Sign in</a>
@@ -33,7 +50,7 @@
                 <a href="?">Company</a>
             </div>
             <div>
-                <h3 class="A12">Add a Product</h3>
+                <h3 class="A12">Add a Product</h3> -->
             </div>
             <form action="/user/add_product_to_db" method="post">
                 <div class="A7">

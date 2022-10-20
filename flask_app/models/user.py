@@ -27,8 +27,10 @@ class User:
 
     @classmethod
     def get_by_id(cls,data):
-        query = "SELECT * FROM users WHERE id = %(id)s;"
+        query = "SELECT * FROM users WHERE user_id = %(id)s;"
         results = connectToMySQL(cls.db).query_db(query,data)
+        print(query)
+        print(results)
         if len(results) < 1:
             return False
         row = results[0]
