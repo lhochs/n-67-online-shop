@@ -16,9 +16,13 @@
 <body>
     <div class="container">
         <div class="nav-top-r">
-            <a href="/login_and_register">Sign in</a>
+            {% if session.user_id %}
+            <a href="/logout">Logout</a>
             <span> | </span>
-            <a href="/login_and_register">Register</a>
+            <a href="/seller_dashboard">Return to Dashboard</a>
+            {% else %}
+            <a href="/login_and_register">Sign in | Register</a>
+            {% endif %}
             <a href="/cart"><img src="{{ url_for('static', filename='/imgs/shopping_cart_icon.jpeg') }}"></a>
         </div>
         <div class="nav-bar">
