@@ -25,6 +25,7 @@
             </div>
         </div>
         <div class="vw-product-card">
+            <img src="{{ url_for('static', filename='/imgs/fail-to-load-img.png') }}">
             <h3>{{product.product_name}}</h3>
             <h4>{{product.price_per_unit | currencyFormat}}</h4>
             <p>{{product.product_description}}</p>
@@ -32,35 +33,6 @@
         </div>
     </div>
 
-    <!-- {%for i in products%}
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src={{product.product_image}} class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div> -->
-
-    <!-- /# not sure if this will sync with the above carousel image #/ -->
-
-
-    <!-- {%endfor%} -->
 </body>
 
 </html>
