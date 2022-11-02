@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <div class="nav-top-r">
-            <a href="">Sign Out</a>
+            <a href="/logout">Logout</a>
             <span> | </span>
             <a href="/">Return to Homepage</a>
         </div>
@@ -20,7 +20,7 @@
             <div class="nav-bar-title">
                 <h1>N 67° Online Store</h1>
             </div>
-            <div>
+            <div class = "nav-bar-link" >
                 <a href="/company">About Our Company</a>
             </div>
         </div>
@@ -29,18 +29,20 @@
         </div>
         <div class="seller-body">
             <h3>All Products</h3>
-            <table>
+            <table class="table table-hover">
                 <tr>
                     <thead>
-                        <th>Product Name</th>
-                        <th>Product Quantity</th>
-                        <th>Seller</th>
-                        <th>Actions</th>
+                        <th scope="col">Product ID #</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Product Quantity</th>
+                        <th scope="col">Seller</th>
+                        <th scope="col">Actions</th>
                     </thead>
                 </tr>
                 <tbody>
                     {%for i in all_products%}
                     <tr>
+                        <th scope="row">{{i.product_id}}</td>
                         <td>{{i.product_name}}</td>
                         <td>{{i.product_quantity}}</td>
                         <td>{{i.users.first_name}} {{i.users.last_name}}</td>
@@ -54,7 +56,7 @@
                     {%endfor%}
                 </tbody>
             </table>
-            <a href="/user/new_product">Add product here</a>
+            <button type="button" class="btn btn-outline-secondary"><a href="/user/new_product">Add product here</a></button>
         </div>
     </div>
 </body>

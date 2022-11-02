@@ -20,16 +20,36 @@
             <div class="nav-bar-title">
                 <h1>N 67° Online Store</h1>
             </div>
-            <div>
+            <div class = "nav-bar-link" >
                 <a href="/company">About Our Company</a>
             </div>
         </div>
-        <div class="vw-product-card">
-            <img src="{{ url_for('static', filename='/imgs/fail-to-load-img.png') }}">
-            <h3>{{product.product_name}}</h3>
-            <h4>{{product.price_per_unit | currencyFormat}}</h4>
-            <p>{{product.product_description}}</p>
-            <p>{{product.product_instructions}}</p>
+        <div class="sv-body">
+            <div class="sv-product-card">
+                <div class="img-siz">
+                    <img src="{{ url_for('static', filename='/imgs/' + product.product_img) }}">
+                </div>
+                <h3 class="sv-title">{{product.product_name}}</h3>
+                <p class="sv-price">Price: {{product.price_per_unit | currencyFormat}}</p>
+                <h5>Description: </h5>
+                <p>{{product.product_description}}</p>
+                <h5>Instructions: </h5>
+                <p>{{product.product_instructions}}</p>
+            </div>
+        </div>
+    </div>
+    <!-- {%for i in products%}
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src={{product.product_image}} class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
         </div>
     </div>
 

@@ -16,24 +16,28 @@
 <body>
     <div class="container">
         <div class="nav-top-r">
-            <a href="/login_and_register">Sign in</a>
+            {% if session.user_id %}
+            <a href="/logout">Logout</a>
             <span> | </span>
-            <a href="/login_and_register">Register</a>
+            <a href="/seller_dashboard">Return to Dashboard</a>
+            {% else %}
+            <a href="/login_and_register">Sign in | Register</a>
+            {% endif %}
             <a href="/cart"><img src="{{ url_for('static', filename='/imgs/shopping_cart_icon.jpeg') }}"></a>
         </div>
         <div class="nav-bar">
             <div class="nav-bar-title">
                 <h1>N 67° Online Store</h1>
             </div>
-            <div>
+            <div class = "nav-bar-link" >
                 <a href="/company">About Our Company</a>
             </div>
         </div>
         <div class="h-body">
             {% for i in all_products %}
                 <div class="h-product-card">
-                    <img src="{{ url_for('static', filename='/imgs/fail-to-load-img.png') }}">
-                    <!-- <p>{{i.product_img}}</p> -->
+                    <img src="{{ url_for('static', filename='/imgs/' + i.product_img) }}">
+
                     <a href="/user/single_product/{{i.product_id}}">{{i.product_name}}</a>
                     <p>{{i.price_per_unit | currencyFormat}}</p>
                     <button class="btn btn-primary product-btn" 

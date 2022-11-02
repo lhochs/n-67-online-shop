@@ -8,14 +8,19 @@
 
 .container{
     /* border: 2px dotted red; */
-    margin: 2% auto;
+    margin: auto;
+    background-color: white;
+    padding: 2%;
 }
 
 .nav-top-r{
     text-align: right;
+    background-color:white;
 }
 
 .nav-bar{
+    /* border: 2px dotted purple; */
+    width: 100%;
     margin: 0;
     align-items: center;
     text-align: center;
@@ -23,11 +28,19 @@
 
 .nav-bar-title{
     border-bottom-style: solid;
+    background-color:white;
+    padding: 0% 0% 2% 0%;
+}
+
+.nav-bar-link{
+    padding-top: 1%;
 }
 
 /* HOMEPAGE */
 
 .h-body{
+    background-image: radial-gradient( lightblue ,white);
+    /* background-image: linear-gradient(to right,lightblue,white); */
     width: auto;
     height: auto;
     display: flex;
@@ -37,10 +50,11 @@
 }
 
 .h-product-card{
-    height:10%;
-    width: 20%;
+    max-height: 12%;
+    max-width: 20%;
     text-align: center;
     align-content: center;
+    background-color: white;
     border: 2px solid rgb(27, 26, 26);
     margin: 2%;
     padding: 2%;
@@ -50,17 +64,23 @@
 }
 
 /* SELLER DASHBOARD */
+
+
+
 .seller-title{
+    padding: 2%;
     text-align: center;
 }
 
 /* ADD PRODUCT FORM */
 .add-prod-title{
     text-align: center;
+    padding-bottom: 10px;
 }
-* Add and Edit forms*/
+/*  Add and Edit forms*/ 
 .A1{
     text-align: center;
+    padding-bottom: 10px;
 }
 
 .A2{
@@ -88,12 +108,13 @@
 .A7{
     display: inline-block;
     position: center;
-    border: solid black 1px;
-    margin-left: 180px;
+    border: solid black 2px;
+    margin-left: 80px;
     padding-top: 50px;
     padding-bottom: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 80px;
+    padding-right: 10px;
+    background-color: white;
 }
 
 .A8{
@@ -160,6 +181,31 @@
     padding-right: 37px;
 }
 
+.B9{
+    background-image: radial-gradient( lightblue ,white);
+    padding-top: 0px;
+}
+
+/* SINGLE VIEW/PRODUCT */
+
+.sv-body{
+    background-image: radial-gradient( lightblue ,white);
+}
+.sv-product-card{
+    /* border: 2pt dotted red; */
+    width: 50%;
+    margin: auto;
+    padding: 2%;
+    /* background-color: aliceblue; */
+}
+
+.sv-product-card img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    padding: 5%;
+}
 
 .vw-product-card{
 text-align: center;
@@ -209,4 +255,20 @@ padding: 2%;
 
 .total{
     padding: 3%;
+}
+
+/* OUR COMPANY */
+
+body{
+    background-image: radial-gradient( lightblue ,white);
+}
+
+.comp-body{
+    width: 80%;
+    margin: auto;
+}
+
+.comp-title{
+    text-align: center;
+    padding-bottom: 2%;
 }

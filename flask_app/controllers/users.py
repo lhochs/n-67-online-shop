@@ -16,6 +16,10 @@ def index():
     # user_id = session["user_id"]
     return render_template("index.html", all_products = Product.get_all())
 
+@app.route("/company")
+def our_team():
+    return render_template("our_team.html")
+
 @app.route("/login_and_register")
 def login_and_register():
     return render_template("login.html")
@@ -23,7 +27,7 @@ def login_and_register():
 @app.route("/logout")
 def logout():
     session.clear()
-    return redirect("/login_and_register")
+    return redirect("/")
 
 # user dashboard - show all the orders they have
 @app.route("/customer_dashboard")
@@ -49,7 +53,6 @@ def seller_dashboard():
     if (session["role_type"] != "seller"):
         return redirect("/")
     products = Product.get_all_products_with_users()
-    # return render_template("seller_dashboard.html", all_products=products)
     return render_template("seller_dashboard.html",  all_products = products)
 
 #####################################
@@ -103,10 +106,9 @@ def login():
     if session["role_type"]== "seller":
         return redirect('/seller_dashboard')
 
-
-@app.route("/signup")
-def signup():
-    return render_template("signup.html")
+# @app.route("/signup")
+# def signup():
+#     return render_template("signup.html")
 
 # This route can be used for both seller and buyer, based on user role
 @app.route("/user/dashboard")

@@ -19,6 +19,8 @@ cryptography = "==38.0.1"
 python-dotenv = "==0.21.0"
 cffi = "==1.15.1"
 pycparser = "==2.21"
+flask-cors = "==3.0.10"
+six = "==1.16.0"
 
 [dev-packages]
 

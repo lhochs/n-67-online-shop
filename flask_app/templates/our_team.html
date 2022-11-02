@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='/css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='/js/my_script.js') }}"></script>
+    <title>N 67° Online Store</title>
+</head>
+
+<body>
+    <body>
+        <div class="container">
+            <div class="nav-top-r">
+                {% if session.user_id %}
+                <a href="/logout">Logout</a>
+                <span> | </span>
+                <a href="/seller_dashboard">Return to Dashboard</a>
+                {% else %}
+                <a href="/login_and_register">Sign in | Register</a>
+                {% endif %}
+                <a href="/cart"><img src="{{ url_for('static', filename='/imgs/shopping_cart_icon.jpeg') }}"></a>
+            </div>
+            <div class="nav-bar">
+                <div class="nav-bar-title">
+                    <h1>N 67° Online Store</h1>
+                </div>
+                <div class = "nav-bar-link" >
+                    <a href="/">Return to Homepage</a>
+                </div>
+            </div>
+        <div>
+            <br>
+            <h3 class="comp-title"><u>Project Idea: N 67° Online Store</u></h3>
+            <div class="comp-body">
+                <p>Stack: Python</p>
+                <p>Description: </p>
+                <p>For our group project we decided to create an online store. It will display products users (registered or not) can buy. Sellers (registered users with a reference number) can add/edit/delete. Only sellers of the added product can edit or delete their product from the store. Users can view items in their shopping cart and their total before deciding to purchase their items. Here they can adjust the quantity on each item or delete items from their cart. Check out will redirect users to the Home page. </p>
+                <p>Team Members: </p>
+                <p>Lily Ochs – <strong>Co-Group Lead</strong>, Front-End, Route/Function/App Testing</p>
+                <p>Matthew Luk – <strong>Co-Group Lead</strong>, Back-End, Login & Registration</p>
+                <p>Angel Galicia – Front-End, Add & Edit Product Forms</p>
+                <p>Ngan Tran – Back-End, Cart Page, Routes & Functions</p>
+                <p>Corey Duffy – Front-End, View Product Page</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
