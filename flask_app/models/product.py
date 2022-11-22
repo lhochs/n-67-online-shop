@@ -23,6 +23,7 @@ class Product:
         query = "SELECT * FROM products;"
         results = connectToMySQL(cls.db).query_db(query)
         products = []
+        print(products)
         for row in results:
             products.append(cls(row))
         return products
